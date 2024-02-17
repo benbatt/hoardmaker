@@ -1,3 +1,5 @@
+"use strict";
+
 let gearData = `
 name,value,bulk,url
 Candle,1 cp,,Equipment.aspx?ID=10

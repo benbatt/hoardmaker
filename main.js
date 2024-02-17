@@ -1,3 +1,5 @@
+"use strict";
+
 // assumes bulkLimit is "-", "L", or an integer
 function bulkWithinLimit(bulk, bulkLimit) {
   if (bulkLimit == "-") {
