@@ -121,15 +121,12 @@ const BaseURL = "https://2e.aonprd.com/";
 
 function generate() {
   let filters = {
+    itemLimit: Number.parseInt(document.getElementById("itemLimit").value),
     maximumValue: valueToGP(document.getElementById("valueLimit").value),
     maximumBulk: document.getElementById("bulkLimit").value,
   };
 
-  if (filters.maximumValue == 0) {
-    filters.itemLimit = 5;
-  } else {
-    filters.itemLimit = 0;
-  }
+  filters.itemLimit = Math.max(1, filters.itemLimit);
 
   let items = selectItems([gear.data, consumables.data], filters);
 
