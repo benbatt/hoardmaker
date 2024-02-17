@@ -144,9 +144,6 @@ function createElement(type, contents) {
   return element;
 }
 
-let gear = Papa.parse(gearData, { header: true });
-let consumables = Papa.parse(consumablesData, { header: true });
-
 const BaseURL = "https://2e.aonprd.com/";
 
 function generate() {
@@ -158,7 +155,7 @@ function generate() {
 
   filters.itemLimit = Math.max(1, filters.itemLimit);
 
-  let items = selectItems([gear.data, consumables.data], filters);
+  let items = selectItems([getCollection("gear"), getCollection("consumables")], filters);
 
   if (items) {
     let table = document.createElement("table");

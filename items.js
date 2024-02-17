@@ -1,6 +1,7 @@
 "use strict";
 
-let gearData = `
+const Data = {
+  gear: `
 name,value,bulk,url
 Candle,1 cp,,Equipment.aspx?ID=10
 Chalk x10,1 cp,,Equipment.aspx?ID=12
@@ -105,9 +106,9 @@ Manacles (Good),250 gp,,Equipment.aspx?ID=32
 Lock (Superior),"4,500 gp",,Equipment.aspx?ID=30
 Manacles (Superior),"5,000 gp",,Equipment.aspx?ID=32
 Holly and Mistletoe,,,Equipment.aspx?ID=26
-`.trim();
+`,
 
-let consumablesData = `
+  consumables: `
 name,value,bulk,url
 Feather Token (Ladder),3 gp,,Equipment.aspx?ID=244
 Holy Water,3 gp,L,Equipment.aspx?ID=245
@@ -239,4 +240,16 @@ Healing Potion (Major),"5,000 gp",L,Equipment.aspx?ID=186
 10th-Level Scroll,"8,000 gp",L,Equipment.aspx?ID=640
 Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167
 Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
-`.trim();
+`,
+};
+
+const Collections = new Map();
+
+function getCollection(name) {
+  if (!Collections.has(name) && Data[name]) {
+    let parseResult = Papa.parse(Data[name].trim(), { header: true });
+    Collections.set(name, parseResult.data);
+  }
+
+  return Collections.get(name);
+}
