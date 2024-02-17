@@ -88,12 +88,12 @@ function takeRandomElement(array) {
 
 const CoinsURL = "Rules.aspx?ID=182";
 
-function selectItems(collections, filters) {
+function selectItems(collections, options) {
   let candidates = [];
 
   for (let collection of collections) {
     for (let item of collection) {
-      if (bulkWithinLimit(item.bulk, filters.bulkLimit)) {
+      if (bulkWithinLimit(item.bulk, options.bulkLimit)) {
         candidates.push(item);
       }
     }
@@ -107,8 +107,8 @@ function selectItems(collections, filters) {
   let currentValue = 0;
 
   while (true) {
-    if (filters.valueLimit > 0) {
-      let remainingValue = filters.valueLimit - currentValue;
+    if (options.valueLimit > 0) {
+      let remainingValue = options.valueLimit - currentValue;
       candidates = candidates.filter((item) => gpValueWithinLimit(item.value, remainingValue));
 
       if (candidates.length == 0) {
@@ -122,15 +122,15 @@ function selectItems(collections, filters) {
     result.push(item);
     currentValue += value;
 
-    if (filters.itemLimit > 0 && result.length == filters.itemLimit) {
+    if (options.itemLimit > 0 && result.length == options.itemLimit) {
       break;
     }
   }
 
   result.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
 
-  if (currentValue < filters.valueLimit) {
-    let coinsValue = filters.valueLimit - currentValue;
+  if (currentValue < options.valueLimit) {
+    let coinsValue = options.valueLimit - currentValue;
     result.push({ name: coinString(coinsValue), value: gpString(coinsValue), bulk: "", url: CoinsURL });
   }
 
@@ -147,15 +147,24 @@ function createElement(type, contents) {
 const BaseURL = "https://2e.aonprd.com/";
 
 function generate() {
-  let filters = {
+  let options = {
     itemLimit: Number.parseInt(document.getElementById("itemLimit").value),
     valueLimit: valueToGP(document.getElementById("valueLimit").value),
     bulkLimit: document.getElementById("bulkLimit").value,
+    collections: [],
   };
 
-  filters.itemLimit = Math.max(1, filters.itemLimit);
+  options.itemLimit = Math.max(1, options.itemLimit);
 
-  let items = selectItems([getCollection("gear"), getCollection("consumables")], filters);
+  for (let name of CollectionNames) {
+    if (document.getElementById(`${name}Enable`).checked) {
+      options.collections.push(name);
+    }
+  }
+
+  let collections = options.collections.map((name) => getCollection(name));
+
+  let items = selectItems(collections, options);
 
   if (items) {
     let table = document.createElement("table");
@@ -191,7 +200,7 @@ function generate() {
   let queryLink = document.getElementById("queryLink");
   queryLink.text = "Link to these settings";
 
-  let searchParams = new URLSearchParams(filters);
+  let searchParams = new URLSearchParams(options);
   queryLink.href = `${document.location.pathname}?${searchParams}`;
 }
 
@@ -208,6 +217,16 @@ function processQueryString() {
 
   if (searchParams.has("bulkLimit")) {
     document.getElementById("bulkLimit").value = searchParams.get("bulkLimit");
+  }
+
+  if (searchParams.has("collections")) {
+    let collections = searchParams.get("collections").split(",");
+
+    for (let name of CollectionNames) {
+      let element = document.getElementById(`${name}Enable`);
+      element.checked = collections.includes(name);
+      console.log(element);
+    }
   }
 }
 

@@ -45,7 +45,7 @@ td, th {
   border: none;
 }
 
-#controls td {
+#controls td:first-child {
   text-align: right;
 }
 
@@ -53,7 +53,7 @@ td, th {
   text-align: center;
 }
 
-#controls td * {
+#controls td > * {
   width: 100%;
 }
 

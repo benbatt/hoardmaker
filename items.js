@@ -245,6 +245,8 @@ Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
 
 const Collections = new Map();
 
+const CollectionNames = [ "gear", "consumables" ];
+
 function getCollection(name) {
   if (!Collections.has(name) && Data[name]) {
     let parseResult = Papa.parse(Data[name].trim(), { header: true });
