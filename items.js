@@ -241,11 +241,84 @@ Healing Potion (Major),"5,000 gp",L,Equipment.aspx?ID=186
 Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167
 Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
 `,
+
+  weapons: `
+name,value,bulk,url
+Clan Dagger,2 gp,L,Weapons.aspx?ID=13
+Club,,1,Weapons.aspx?ID=2
+Dagger,2 sp,L,Weapons.aspx?ID=3
+Gauntlet,2 sp,L,Weapons.aspx?ID=4
+Katar,3 sp,L,Weapons.aspx?ID=14
+Light Mace,4 sp,L,Weapons.aspx?ID=5
+Longspear,5 sp,2,Weapons.aspx?ID=6
+Mace,1 gp,1,Weapons.aspx?ID=7
+Morningstar,1 gp,1,Weapons.aspx?ID=8
+Sickle,2 sp,L,Weapons.aspx?ID=9
+Spear,1 sp,1,Weapons.aspx?ID=10
+Spiked Gauntlet,3 sp,L,Weapons.aspx?ID=11
+Staff,,1,Weapons.aspx?ID=12
+Bastard Sword,4 gp,1,Weapons.aspx?ID=15
+Battle Axe,1 gp,1,Weapons.aspx?ID=16
+Bo Staff,2 sp,2,Weapons.aspx?ID=17
+Dogslicer,1 sp,L,Weapons.aspx?ID=49
+Elven Curve Blade,4 gp,2,Weapons.aspx?ID=50
+Falchion,3 gp,2,Weapons.aspx?ID=18
+Filcher's Fork,1 gp,L,Weapons.aspx?ID=51
+Flail,8 sp,1,Weapons.aspx?ID=19
+Glaive,1 gp,2,Weapons.aspx?ID=20
+Gnome Hooked Hammer,2 gp,1,Weapons.aspx?ID=52
+Greataxe,2 gp,2,Weapons.aspx?ID=21
+Greatclub,1 gp,2,Weapons.aspx?ID=22
+Greatpick,1 gp,2,Weapons.aspx?ID=23
+Greatsword,2 gp,2,Weapons.aspx?ID=24
+Guisarme,2 gp,2,Weapons.aspx?ID=25
+Halberd,2 gp,2,Weapons.aspx?ID=26
+Hatchet,4 sp,L,Weapons.aspx?ID=27
+Horsechopper,9 sp,2,Weapons.aspx?ID=53
+Kama,1 gp,L,Weapons.aspx?ID=54
+Katana,2 gp,1,Weapons.aspx?ID=55
+Kukri,6 sp,L,Weapons.aspx?ID=56
+Lance,1 gp,2,Weapons.aspx?ID=28
+Light Hammer,3 sp,L,Weapons.aspx?ID=29
+Light Pick,4 sp,L,Weapons.aspx?ID=30
+Longsword,1 gp,1,Weapons.aspx?ID=31
+Main-gauche,5 sp,L,Weapons.aspx?ID=32
+Maul,3 gp,2,Weapons.aspx?ID=33
+Nunchaku,2 sp,L,Weapons.aspx?ID=57
+Orc Knuckle Dagger,7 sp,L,Weapons.aspx?ID=58
+Pick,7 sp,1,Weapons.aspx?ID=34
+Ranseur,2 gp,2,Weapons.aspx?ID=35
+Rapier,2 gp,1,Weapons.aspx?ID=36
+Sai,6 sp,L,Weapons.aspx?ID=59
+Sap,1 sp,L,Weapons.aspx?ID=37
+Scimitar,1 gp,1,Weapons.aspx?ID=38
+Scythe,2 gp,2,Weapons.aspx?ID=39
+Shield Bash,,,Weapons.aspx?ID=40
+Shield Boss,5 sp,,Weapons.aspx?ID=41
+Shield Spikes,5 sp,,Weapons.aspx?ID=42
+Shortsword,9 sp,L,Weapons.aspx?ID=43
+Spiked Chain,3 gp,1,Weapons.aspx?ID=60
+Starknife,2 gp,L,Weapons.aspx?ID=44
+Temple Sword,2 gp,1,Weapons.aspx?ID=61
+Trident,1 gp,1,Weapons.aspx?ID=45
+War Flail,2 gp,2,Weapons.aspx?ID=46
+Warhammer,1 gp,1,Weapons.aspx?ID=47
+Whip,1 sp,1,Weapons.aspx?ID=48
+Dwarven War Axe,3 gp,2,Weapons.aspx?ID=62
+Gnome Flickmace,3 gp,1,Weapons.aspx?ID=63
+Orc Necksplitter,2 gp,1,Weapons.aspx?ID=64
+Sawtooth Saber,5 gp,L,Weapons.aspx?ID=65
+Blowgun,1 sp,L,Weapons.aspx?ID=66
+Crossbow,3 gp,1,Weapons.aspx?ID=67
+Dart,1 cp,L,Weapons.aspx?ID=68
+Hand Crossbow,3 gp,L,Weapons.aspx?ID=69
+`,
 };
 
 const Collections = new Map([
   [ "gear", { displayName: "Gear" } ],
   [ "consumables", { displayName: "Consumables" } ],
+  [ "weapons", { displayName: "Weapons" } ],
 ]);
 
 function getCollection(name) {
