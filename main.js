@@ -114,6 +114,8 @@ function createElement(type, contents) {
 
 let gear = Papa.parse(gearData, { header: true });
 
+const BaseURL = "https://2e.aonprd.com/";
+
 function generate() {
   let filters = {
     maximumValue: valueToGP(document.getElementById("valueLimit").value),
@@ -142,7 +144,7 @@ function generate() {
       totalValue += valueToGP(item.value);
 
       let name = createElement("a", item.name);
-      name.setAttribute("href", item.url);
+      name.setAttribute("href", `${BaseURL}${item.url}`);
 
       let tr = document.createElement("tr");
       tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk));
