@@ -1,16 +1,16 @@
-// assumes maximumBulk is "-", "L", or an integer
-function bulkWithinLimit(bulk, maximumBulk) {
-  if (maximumBulk == "-") {
+// assumes bulkLimit is "-", "L", or an integer
+function bulkWithinLimit(bulk, bulkLimit) {
+  if (bulkLimit == "-") {
     return true;
   } else {
     if (bulk == "" || bulk == "L") {
       return true;
     }
 
-    maximumBulk = Number.parseInt(maximumBulk);
+    bulkLimit = Number.parseInt(bulkLimit);
     bulk = Number.parseInt(bulk);
 
-    if (Number.isInteger(maximumBulk) && Number.isInteger(bulk) && bulk <= maximumBulk) {
+    if (Number.isInteger(bulkLimit) && Number.isInteger(bulk) && bulk <= bulkLimit) {
       return true;
     }
   }
@@ -70,9 +70,9 @@ function coinString(value) {
   return coins.join(", ");
 }
 
-function gpValueWithinLimit(value, maximumValue) {
+function gpValueWithinLimit(value, valueLimit) {
   value = valueToGP(value);
-  return 0 < value && value <= maximumValue;
+  return 0 < value && value <= valueLimit;
 }
 
 function takeRandomElement(array) {
@@ -91,7 +91,7 @@ function selectItems(collections, filters) {
 
   for (let collection of collections) {
     for (let item of collection) {
-      if (bulkWithinLimit(item.bulk, filters.maximumBulk)) {
+      if (bulkWithinLimit(item.bulk, filters.bulkLimit)) {
         candidates.push(item);
       }
     }
@@ -105,8 +105,8 @@ function selectItems(collections, filters) {
   let currentValue = 0;
 
   while (true) {
-    if (filters.maximumValue > 0) {
-      let remainingValue = filters.maximumValue - currentValue;
+    if (filters.valueLimit > 0) {
+      let remainingValue = filters.valueLimit - currentValue;
       candidates = candidates.filter((item) => gpValueWithinLimit(item.value, remainingValue));
 
       if (candidates.length == 0) {
@@ -127,8 +127,8 @@ function selectItems(collections, filters) {
 
   result.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
 
-  if (currentValue < filters.maximumValue) {
-    let coinsValue = filters.maximumValue - currentValue;
+  if (currentValue < filters.valueLimit) {
+    let coinsValue = filters.valueLimit - currentValue;
     result.push({ name: coinString(coinsValue), value: gpString(coinsValue), bulk: "", url: CoinsURL });
   }
 
@@ -150,8 +150,8 @@ const BaseURL = "https://2e.aonprd.com/";
 function generate() {
   let filters = {
     itemLimit: Number.parseInt(document.getElementById("itemLimit").value),
-    maximumValue: valueToGP(document.getElementById("valueLimit").value),
-    maximumBulk: document.getElementById("bulkLimit").value,
+    valueLimit: valueToGP(document.getElementById("valueLimit").value),
+    bulkLimit: document.getElementById("bulkLimit").value,
   };
 
   filters.itemLimit = Math.max(1, filters.itemLimit);
@@ -188,6 +188,29 @@ function generate() {
     let output = document.getElementById("output");
     output.prepend(table);
   }
+
+  let queryLink = document.getElementById("queryLink");
+  queryLink.text = "Link to these settings";
+
+  let searchParams = new URLSearchParams(filters);
+  queryLink.href = `${document.location.pathname}?${searchParams}`;
 }
 
+function processQueryString() {
+  let searchParams = new URLSearchParams(document.location.search);
+
+  if (searchParams.has("itemLimit")) {
+    document.getElementById("itemLimit").value = searchParams.get("itemLimit");
+  }
+
+  if (searchParams.has("valueLimit")) {
+    document.getElementById("valueLimit").value = searchParams.get("valueLimit");
+  }
+
+  if (searchParams.has("bulkLimit")) {
+    document.getElementById("bulkLimit").value = searchParams.get("bulkLimit");
+  }
+}
+
+processQueryString();
 document.getElementById("generate").addEventListener("click", generate);

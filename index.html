@@ -2,6 +2,10 @@
 <html>
   <head>
     <link href="style.css" rel="stylesheet" type="text/css">
+
+    <script defer src="papaparse.min.js"></script>
+    <script defer src="items.js"></script>
+    <script defer src="main.js"></script>
   </head>
   <body>
     <header>
@@ -9,7 +13,7 @@
     </header>
     <div id="main">
       <section id="controls">
-        <h2>Controls</h2>
+        <h2>Settings</h2>
         <table>
           <tbody>
             <tr>
@@ -57,6 +61,12 @@
                 <button type="button" name="generate" id="generate">Generate</button>
               </td>
             </tr>
+            <tr>
+              <td />
+              <td >
+                <a id="queryLink"></a>
+              </td>
+            </tr>
           </tfoot>
         </table>
       </section>
@@ -66,9 +76,5 @@
         </div>
       </section>
     </div>
-
-    <script src="papaparse.min.js"></script>
-    <script src="items.js"></script>
-    <script src="main.js"></script>
   </body>
 </html>
