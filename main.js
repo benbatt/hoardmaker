@@ -249,7 +249,6 @@ function processQueryString() {
     for (let name of Collections.keys()) {
       let element = document.getElementById(`${name}Enable`);
       element.checked = collections.includes(name);
-      console.log(element);
     }
   }
 }
