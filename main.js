@@ -65,16 +65,18 @@ function takeRandomElement(array) {
   return element;
 }
 
-function selectItems(items, filters) {
-  let rowIndices = [];
+function selectItems(collections, filters) {
+  let candidates = [];
 
-  for (let i = 0; i < items.length; ++i) {
-    if (bulkWithinLimit(items[i].bulk, filters.maximumBulk)) {
-      rowIndices.push(i);
+  for (let collection of collections) {
+    for (let item of collection) {
+      if (bulkWithinLimit(item.bulk, filters.maximumBulk)) {
+        candidates.push(item);
+      }
     }
   }
 
-  if (rowIndices.length == 0) {
+  if (candidates.length == 0) {
     return null;
   }
 
@@ -84,17 +86,17 @@ function selectItems(items, filters) {
   while (true) {
     if (filters.maximumValue > 0) {
       let remainingValue = filters.maximumValue - currentValue;
-      rowIndices = rowIndices.filter((rowIndex) => gpValueWithinLimit(items[rowIndex].value, remainingValue));
+      candidates = candidates.filter((item) => gpValueWithinLimit(item.value, remainingValue));
 
-      if (rowIndices.length == 0) {
+      if (candidates.length == 0) {
         break;
       }
     }
 
-    var rowIndex = takeRandomElement(rowIndices);
-    let value = valueToGP(items[rowIndex].value);
+    let item = takeRandomElement(candidates);
+    let value = valueToGP(item.value);
 
-    result.push(items[rowIndex]);
+    result.push(item);
     currentValue += value;
 
     if (filters.itemLimit > 0 && result.length == filters.itemLimit) {
@@ -113,6 +115,7 @@ function createElement(type, contents) {
 }
 
 let gear = Papa.parse(gearData, { header: true });
+let consumables = Papa.parse(consumablesData, { header: true });
 
 const BaseURL = "https://2e.aonprd.com/";
 
@@ -128,7 +131,7 @@ function generate() {
     filters.itemLimit = 0;
   }
 
-  let items = selectItems(gear.data, filters);
+  let items = selectItems([gear.data, consumables.data], filters);
 
   if (items) {
     let table = document.createElement("table");
