@@ -51,6 +51,25 @@ function gpString(value) {
   return value.toLocaleString({ maximumFractionDigits: 2 }) + " gp";
 }
 
+const Denominations = ["gp", "sp", "cp"];
+
+function coinString(value) {
+  let coins = [];
+  let coinValue = 1;
+
+  for (let denomination of Denominations) {
+    if (value >= coinValue) {
+      let count = Math.floor(value / coinValue);
+      coins.push(`${count} ${denomination}`);
+      value -= count * coinValue;
+    }
+
+    coinValue /= 10;
+  }
+
+  return coins.join(", ");
+}
+
 function gpValueWithinLimit(value, maximumValue) {
   value = valueToGP(value);
   return 0 < value && value <= maximumValue;
@@ -64,6 +83,8 @@ function takeRandomElement(array) {
 
   return element;
 }
+
+const CoinsURL = "Rules.aspx?ID=182";
 
 function selectItems(collections, filters) {
   let candidates = [];
@@ -104,6 +125,13 @@ function selectItems(collections, filters) {
     }
   }
 
+  result.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
+
+  if (currentValue < filters.maximumValue) {
+    let coinsValue = filters.maximumValue - currentValue;
+    result.push({ name: coinString(coinsValue), value: gpString(coinsValue), bulk: "", url: CoinsURL });
+  }
+
   return result.length > 0 ? result : null;
 }
 
@@ -139,8 +167,6 @@ function generate() {
     table.append(header);
 
     let totalValue = 0;
-
-    items.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
 
     for (let item of items) {
       totalValue += valueToGP(item.value);
