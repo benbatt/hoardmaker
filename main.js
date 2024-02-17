@@ -143,6 +143,8 @@ function generate() {
 
     let totalValue = 0;
 
+    items.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
+
     for (let item of items) {
       totalValue += valueToGP(item.value);
 
