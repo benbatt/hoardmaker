@@ -243,15 +243,18 @@ Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
 `,
 };
 
-const Collections = new Map();
-
-const CollectionNames = [ "gear", "consumables" ];
+const Collections = new Map([
+  [ "gear", { displayName: "Gear" } ],
+  [ "consumables", { displayName: "Consumables" } ],
+]);
 
 function getCollection(name) {
-  if (!Collections.has(name) && Data[name]) {
+  let collection = Collections.get(name);
+
+  if (collection && !collection.items && Data[name]) {
     let parseResult = Papa.parse(Data[name].trim(), { header: true });
-    Collections.set(name, parseResult.data);
+    collection.items = parseResult.data;
   }
 
-  return Collections.get(name);
+  return collection;
 }

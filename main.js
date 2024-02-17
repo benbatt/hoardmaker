@@ -156,13 +156,13 @@ function generate() {
 
   options.itemLimit = Math.max(1, options.itemLimit);
 
-  for (let name of CollectionNames) {
+  for (let name of Collections.keys()) {
     if (document.getElementById(`${name}Enable`).checked) {
       options.collections.push(name);
     }
   }
 
-  let collections = options.collections.map((name) => getCollection(name));
+  let collections = options.collections.map((name) => getCollection(name).items);
 
   let items = selectItems(collections, options);
 
@@ -204,6 +204,30 @@ function generate() {
   queryLink.href = `${document.location.pathname}?${searchParams}`;
 }
 
+function createCollectionControls() {
+  let itemTypes = document.getElementById("itemTypes");
+
+  for (let entry of Collections.entries()) {
+    let div = document.createElement("div");
+
+    let id = `${entry[0]}Enable`;
+
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("id", id);
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("checked", true);
+
+    div.append(checkbox);
+
+    let label = createElement("label", entry[1].displayName);
+    label.setAttribute("for", id);
+
+    div.append(label);
+
+    itemTypes.append(div);
+  }
+}
+
 function processQueryString() {
   let searchParams = new URLSearchParams(document.location.search);
 
@@ -222,7 +246,7 @@ function processQueryString() {
   if (searchParams.has("collections")) {
     let collections = searchParams.get("collections").split(",");
 
-    for (let name of CollectionNames) {
+    for (let name of Collections.keys()) {
       let element = document.getElementById(`${name}Enable`);
       element.checked = collections.includes(name);
       console.log(element);
@@ -230,5 +254,6 @@ function processQueryString() {
   }
 }
 
+createCollectionControls();
 processQueryString();
 document.getElementById("generate").addEventListener("click", generate);
