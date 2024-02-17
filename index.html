@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+      <h1>Treasure Generator</h1>
+    </header>
+    <div id="main">
+      <section id="controls">
+        <h2>Controls</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="bulkLimit">Maximum individual bulk</label>
+              </td>
+              <td>
+                <select id="bulkLimit">
+                  <option value="-">No limit</option>
+                  <option>L</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="valueLimit">Maximum total value</label>
+              </td>
+              <td>
+                <input id="valueLimit" />
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <button type="button" name="generate" id="generate">Generate</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+      <section>
+        <h2>Results</h2>
+        <div id="output">
+        </div>
+      </section>
+    </div>
+
+    <script src="papaparse.min.js"></script>
+    <script src="items.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
