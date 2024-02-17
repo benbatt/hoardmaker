@@ -1,2 +1,2 @@
-# hoardmaker
-Treasure hoard generator for tabletop RPGs
+# HoardMaker
+A treasure hoard generator for tabletop RPGs.
