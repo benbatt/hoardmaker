@@ -38,6 +38,7 @@ td, th {
 #controls table {
   width: 100%;
   border: none;
+  margin: 0px;
 }
 
 #controls td {
@@ -54,4 +55,8 @@ td, th {
 
 #controls td * {
   width: 100%;
+}
+
+#generate {
+  height: 50px;
 }
