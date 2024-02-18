@@ -149,22 +149,30 @@ const Transformations = new Map([
   [ "widening", function(item, parameters) {
     let level = +parameters.level;
     let spell = selectSpell((spell) => {
-      if ((+spell.level) == level) {
-        // TODO no duration
-        // TODO casting time is [one-action] or [two-actions]
-        if (spell.area.match(/cone|line/)) {
-          return true;
-        }
+      if ((+spell.level) != level) {
+        return false;
+      }
 
-        let match = spell.area.match(/(\d+)-foot burst/);
+      if (spell.duration.length > 0) {
+        return false;
+      }
 
-        if (match && +match[1] >= 10) {
-          return true;
-        }
+      if (!(spell.actions.includes("[one-action]") || spell.actions.includes("[two-actions]"))) {
+        return false;
+      }
+
+      if (spell.area.match(/cone|line/)) {
+        return true;
+      }
+
+      let match = spell.area.match(/(\d+)-foot burst/);
+
+      if (match && +match[1] >= 10) {
+        return true;
       }
 
       return false;
-    })
+    });
 
     let result = cloneItem(item);
     result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
