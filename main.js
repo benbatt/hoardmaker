@@ -88,7 +88,6 @@ function takeRandomElement(array) {
 
 function selectSpell(predicate) {
   let candidates = getSpells().filter(predicate);
-  console.log(candidates.map((spell) => `${spell.level}: ${spell.name} (${spell.area})`));
   let index = Math.floor(Math.random() * candidates.length);
 
   return candidates[index];
