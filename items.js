@@ -242,6 +242,22 @@ Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167
 Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
 `,
 
+  armour: `
+name,value,bulk,url
+Explorer's Clothing,1 sp,L,Armor.aspx?ID=2
+Padded Armor,2 sp,L,Armor.aspx?ID=3
+Leather Armor,2 gp,1,Armor.aspx?ID=4
+Studded Leather Armor,3 gp,1,Armor.aspx?ID=5
+Chain Shirt,5 gp,1,Armor.aspx?ID=6
+Hide Armor,2 gp,2,Armor.aspx?ID=7
+Scale Mail,4 gp,2,Armor.aspx?ID=8
+Chain Mail,6 gp,2,Armor.aspx?ID=9
+Breastplate,8 gp,2,Armor.aspx?ID=10
+Splint Mail,13 gp,3,Armor.aspx?ID=11
+Half Plate,18 gp,3,Armor.aspx?ID=12
+Full Plate,30 gp,4,Armor.aspx?ID=13
+`,
+
   weapons: `
 name,value,bulk,url
 Clan Dagger,2 gp,L,Weapons.aspx?ID=13
@@ -318,6 +334,7 @@ Hand Crossbow,3 gp,L,Weapons.aspx?ID=69
 const Collections = new Map([
   [ "gear", { displayName: "Gear" } ],
   [ "consumables", { displayName: "Consumables" } ],
+  [ "armour", { displayName: "Armour" }],
   [ "weapons", { displayName: "Weapons" } ],
 ]);
 
