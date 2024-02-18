@@ -86,6 +86,115 @@ function takeRandomElement(array) {
   return element;
 }
 
+function selectSpell(predicate) {
+  let candidates = getSpells().filter(predicate);
+  console.log(candidates.map((spell) => `${spell.level}: ${spell.name} (${spell.area})`));
+  let index = Math.floor(Math.random() * candidates.length);
+
+  return candidates[index];
+}
+
+function cloneItem(item) {
+  return {
+    name: item.name,
+    value: item.value,
+    bulk: item.bulk,
+    url: item.url,
+    transform: item.transform,
+  };
+}
+
+function createElement(type, contents) {
+  let element = document.createElement(type);
+  element.append(contents);
+
+  return element;
+}
+
+const BaseURL = "https://2e.aonprd.com/";
+
+function createAnchor(contents, url) {
+  let anchor = createElement("a", contents);
+  anchor.setAttribute("href", `${BaseURL}${url}`);
+
+  return anchor;
+}
+
+function createSpellItemName(template, itemURL, spellName, spellURL) {
+  let itemLinkStart = template.indexOf("[") + 1;
+  let itemLinkEnd = template.indexOf("]");
+
+  let spellIndex = template.indexOf("$");
+
+  let itemLink = createAnchor(template.substring(itemLinkStart, itemLinkEnd), itemURL);
+  let infix = template.substring(itemLinkEnd + 1, spellIndex);
+  let suffix = template.substring(spellIndex + 1);
+
+  let result = document.createElement("span");
+  result.append(itemLink, infix, createAnchor(spellName, spellURL), suffix);
+
+  return result;
+}
+
+const Transformations = new Map([
+  [ "spell", function(item, parameters) {
+    let level = +parameters.level;
+    let spell = selectSpell((spell) => (+spell.level) == level);
+
+    let result = cloneItem(item);
+    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+
+    return result;
+  }],
+  [ "widening", function(item, parameters) {
+    let level = +parameters.level;
+    let spell = selectSpell((spell) => {
+      if ((+spell.level) == level) {
+        // TODO no duration
+        // TODO casting time is [one-action] or [two-actions]
+        if (spell.area.match(/cone|line/)) {
+          return true;
+        }
+
+        let match = spell.area.match(/(\d+)-foot burst/);
+
+        if (match && +match[1] >= 10) {
+          return true;
+        }
+      }
+
+      return false;
+    })
+
+    let result = cloneItem(item);
+    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+
+    return result;
+  }],
+]);
+
+function parseParameters(parameters) {
+  let pairs = parameters.split("&");
+
+  let result = {};
+
+  for (let pair of pairs) {
+    let [name, value] = pair.split("=");
+    result[name] = value;
+  }
+
+  return result;
+}
+
+function applyTransformation(item) {
+  if (item.transform) {
+    let parameters = parseParameters(item.transform)
+    return Transformations.get(parameters.type)(item, parameters);
+  } else {
+    return item;
+  }
+}
+
 const CoinsURL = "Rules.aspx?ID=182";
 
 function selectItems(collections, options) {
@@ -119,7 +228,7 @@ function selectItems(collections, options) {
     let item = takeRandomElement(candidates);
     let value = valueToGP(item.value);
 
-    result.push(item);
+    result.push(applyTransformation(item));
     currentValue += value;
 
     if (options.itemLimit > 0 && result.length == options.itemLimit) {
@@ -136,15 +245,6 @@ function selectItems(collections, options) {
 
   return result.length > 0 ? result : null;
 }
-
-function createElement(type, contents) {
-  let element = document.createElement(type);
-  element.append(contents);
-
-  return element;
-}
-
-const BaseURL = "https://2e.aonprd.com/";
 
 function generate() {
   let options = {
@@ -179,8 +279,13 @@ function generate() {
     for (let item of items) {
       totalValue += valueToGP(item.value);
 
-      let name = createElement("a", item.name);
-      name.setAttribute("href", `${BaseURL}${item.url}`);
+      let name;
+
+      if (typeof(item.name) == "string") {
+        name = createAnchor(item.name, item.url);
+      } else {
+        name = item.name;
+      }
 
       let tr = document.createElement("tr");
       tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk));
