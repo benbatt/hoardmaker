@@ -673,6 +673,47 @@ Staff of Power,"10,000 gp",1,Equipment.aspx?ID=361
 Staff of the Magi,"90,000 gp",1,Equipment.aspx?ID=362
 `}],
 
+  [ "wands", { displayName: "Wands", data: `
+name,value,bulk,url
+Magic Wand (1st-Level Spell),60 gp,L,Equipment.aspx?ID=368
+Wand of Widening (1st-Level Spell),100 gp,L,Equipment.aspx?ID=373
+Magic Wand (2nd-Level Spell),160 gp,L,Equipment.aspx?ID=368
+Wand of Continuation (1st-Level Spell),160 gp,L,Equipment.aspx?ID=369
+Wand of Manifold Missiles (1st-Level Spell),160 gp,L,Equipment.aspx?ID=370
+Wand of Widening (2nd-Level Spell),250 gp,L,Equipment.aspx?ID=373
+Magic Wand (3rd-Level Spell),360 gp,L,Equipment.aspx?ID=368
+Wand of Continuation (2nd-Level Spell),360 gp,L,Equipment.aspx?ID=369
+Wand of Smoldering Fireballs (3rd-Level Spell),500 gp,L,Equipment.aspx?ID=372
+Wand of Widening (3rd-Level Spell),500 gp,L,Equipment.aspx?ID=373
+Magic Wand (4th-Level Spell),700 gp,L,Equipment.aspx?ID=368
+Wand of Continuation (3rd-Level Spell),700 gp,L,Equipment.aspx?ID=369
+Wand of Manifold Missiles (3rd-Level Spell),700 gp,L,Equipment.aspx?ID=370
+Wand of Widening (4th-Level Spell),"1,000 gp",L,Equipment.aspx?ID=373
+Magic Wand (5th-Level Spell),"1,500 gp",L,Equipment.aspx?ID=368
+Wand of Continuation (4th-Level Spell),"1,500 gp",L,Equipment.aspx?ID=369
+Wand of Smoldering Fireballs (5th-Level Spell),"2,000 gp",L,Equipment.aspx?ID=372
+Wand of Widening (5th-Level Spell),"2,000 gp",L,Equipment.aspx?ID=373
+Magic Wand (6th-Level Spell),"3,000 gp",L,Equipment.aspx?ID=368
+Wand of Continuation (5th-Level Spell),"3,000 gp",L,Equipment.aspx?ID=369
+Wand of Manifold Missiles (5th-Level Spell),"3,000 gp",L,Equipment.aspx?ID=370
+Wand of Widening (6th-Level Spell),"4,500 gp",L,Equipment.aspx?ID=373
+Magic Wand (7th-Level Spell),"6,500 gp",L,Equipment.aspx?ID=368
+Wand of Continuation (6th-Level Spell),"6,500 gp",L,Equipment.aspx?ID=369
+Wand of Slaying (7th-Level Spell),"10,000 gp",L,Equipment.aspx?ID=371
+Wand of Smoldering Fireballs (7th-Level Spell),"10,000 gp",L,Equipment.aspx?ID=372
+Wand of Widening (7th-Level Spell),"10,000 gp",L,Equipment.aspx?ID=373
+Magic Wand (8th-Level Spell),"15,000 gp",L,Equipment.aspx?ID=368
+Wand of Continuation (7th-Level Spell),"15,000 gp",L,Equipment.aspx?ID=369
+Wand of Manifold Missiles (7th-Level Spell),"15,000 gp",L,Equipment.aspx?ID=370
+Wand of Slaying (8th-Level Spell),"24,000 gp",L,Equipment.aspx?ID=371
+Wand of Widening (8th-Level Spell),"24,000 gp",L,Equipment.aspx?ID=373
+Magic Wand (9th-Level Spell),"40,000 gp",L,Equipment.aspx?ID=368
+Wand of Continuation (8th-Level Spell),"40,000 gp",L,Equipment.aspx?ID=369
+Wand of Slaying (9th-Level Spell),"70,000 gp",L,Equipment.aspx?ID=371
+Wand of Smoldering Fireballs (9th-Level Spell),"70,000 gp",L,Equipment.aspx?ID=372
+Wand of Widening (9th-Level Spell),"70,000 gp",L,Equipment.aspx?ID=373
+`}],
+
   [ "armour", { displayName: "Armour", data: `
 name,value,bulk,url
 Explorer's Clothing,1 sp,L,Armor.aspx?ID=2
