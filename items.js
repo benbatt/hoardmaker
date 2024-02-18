@@ -258,6 +258,14 @@ Half Plate,18 gp,3,Armor.aspx?ID=12
 Full Plate,30 gp,4,Armor.aspx?ID=13
 `}],
 
+  [ "shields", { displayName: "Shields", data: `
+name,value,bulk,url
+Buckler,1 gp,L,Shields.aspx?ID=1
+Wooden Shield,1 gp,1,Shields.aspx?ID=2
+Steel Shield,2 gp,1,Shields.aspx?ID=3
+Tower Shield,10 gp,4,Shields.aspx?ID=4
+`}],
+
   [ "weapons", { displayName: "Weapons", data: `
 name,value,bulk,url
 Clan Dagger,2 gp,L,Weapons.aspx?ID=13
