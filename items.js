@@ -1,7 +1,7 @@
 "use strict";
 
-const Data = {
-  gear: `
+const Collections = new Map([
+  [ "gear", { displayName: "Gear", data: `
 name,value,bulk,url
 Candle,1 cp,,Equipment.aspx?ID=10
 Chalk x10,1 cp,,Equipment.aspx?ID=12
@@ -106,9 +106,9 @@ Manacles (Good),250 gp,,Equipment.aspx?ID=32
 Lock (Superior),"4,500 gp",,Equipment.aspx?ID=30
 Manacles (Superior),"5,000 gp",,Equipment.aspx?ID=32
 Holly and Mistletoe,,,Equipment.aspx?ID=26
-`,
+`}],
 
-  consumables: `
+  [ "consumables", { displayName: "Consumables", data: `
 name,value,bulk,url
 Feather Token (Ladder),3 gp,,Equipment.aspx?ID=244
 Holy Water,3 gp,L,Equipment.aspx?ID=245
@@ -240,9 +240,9 @@ Healing Potion (Major),"5,000 gp",L,Equipment.aspx?ID=186
 10th-Level Scroll,"8,000 gp",L,Equipment.aspx?ID=640
 Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167
 Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172
-`,
+`}],
 
-  armour: `
+  [ "armour", { displayName: "Armour", data: `
 name,value,bulk,url
 Explorer's Clothing,1 sp,L,Armor.aspx?ID=2
 Padded Armor,2 sp,L,Armor.aspx?ID=3
@@ -256,9 +256,9 @@ Breastplate,8 gp,2,Armor.aspx?ID=10
 Splint Mail,13 gp,3,Armor.aspx?ID=11
 Half Plate,18 gp,3,Armor.aspx?ID=12
 Full Plate,30 gp,4,Armor.aspx?ID=13
-`,
+`}],
 
-  weapons: `
+  [ "weapons", { displayName: "Weapons", data: `
 name,value,bulk,url
 Clan Dagger,2 gp,L,Weapons.aspx?ID=13
 Club,,1,Weapons.aspx?ID=2
@@ -328,21 +328,14 @@ Blowgun,1 sp,L,Weapons.aspx?ID=66
 Crossbow,3 gp,1,Weapons.aspx?ID=67
 Dart,1 cp,L,Weapons.aspx?ID=68
 Hand Crossbow,3 gp,L,Weapons.aspx?ID=69
-`,
-};
-
-const Collections = new Map([
-  [ "gear", { displayName: "Gear" } ],
-  [ "consumables", { displayName: "Consumables" } ],
-  [ "armour", { displayName: "Armour" }],
-  [ "weapons", { displayName: "Weapons" } ],
+`}],
 ]);
 
 function getCollection(name) {
   let collection = Collections.get(name);
 
-  if (collection && !collection.items && Data[name]) {
-    let parseResult = Papa.parse(Data[name].trim(), { header: true });
+  if (collection && !collection.items) {
+    let parseResult = Papa.parse(collection.data.trim(), { header: true });
     collection.items = parseResult.data;
   }
 
