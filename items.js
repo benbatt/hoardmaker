@@ -627,6 +627,52 @@ Whisper of the First Lie,"60,000 gp",,Equipment.aspx?ID=471
 Ring of Spell Turning,"67,000 gp",,Equipment.aspx?ID=458
 `}],
 
+  [ "staves", { displayName: "Staves", data: `
+name,value,bulk,url
+Staff of Fire,60 gp,1,Equipment.aspx?ID=356
+Animal Staff,90 gp,1,Equipment.aspx?ID=349
+Mentalist's Staff,90 gp,1,Equipment.aspx?ID=350
+Staff of Healing,90 gp,1,Equipment.aspx?ID=357
+Verdant Staff,225 gp,1,Equipment.aspx?ID=364
+Staff of Abjuration,230 gp,1,Equipment.aspx?ID=351
+Staff of Conjuration,230 gp,1,Equipment.aspx?ID=352
+Staff of Divination,230 gp,1,Equipment.aspx?ID=353
+Staff of Enchantment,230 gp,1,Equipment.aspx?ID=354
+Staff of Evocation,230 gp,1,Equipment.aspx?ID=355
+Staff of Illusion,230 gp,1,Equipment.aspx?ID=359
+Staff of Necromancy,230 gp,1,Equipment.aspx?ID=360
+Staff of Transmutation,230 gp,1,Equipment.aspx?ID=363
+Staff of Illumination,425 gp,1,Equipment.aspx?ID=358
+Mentalist's Staff (Greater),450 gp,1,Equipment.aspx?ID=350
+Staff of Fire (Greater),450 gp,1,Equipment.aspx?ID=356
+Animal Staff (Greater),460 gp,1,Equipment.aspx?ID=349
+Staff of Healing (Greater),470 gp,1,Equipment.aspx?ID=357
+Staff of Abjuration (Greater),900 gp,1,Equipment.aspx?ID=351
+Staff of Conjuration (Greater),900 gp,1,Equipment.aspx?ID=352
+Staff of Divination (Greater),900 gp,1,Equipment.aspx?ID=353
+Staff of Enchantment (Greater),900 gp,1,Equipment.aspx?ID=354
+Staff of Evocation (Greater),900 gp,1,Equipment.aspx?ID=355
+Staff of Illusion (Greater),900 gp,1,Equipment.aspx?ID=359
+Staff of Necromancy (Greater),900 gp,1,Equipment.aspx?ID=360
+Staff of Transmutation (Greater),900 gp,1,Equipment.aspx?ID=363
+Verdant Staff (Greater),"1,750 gp",1,Equipment.aspx?ID=364
+Mentalist's Staff (Major),"1,800 gp",1,Equipment.aspx?ID=350
+Staff of Fire (Major),"1,800 gp",1,Equipment.aspx?ID=356
+Staff of Healing (Major),"1,800 gp",1,Equipment.aspx?ID=357
+Animal Staff (Major),"1,900 gp",1,Equipment.aspx?ID=349
+Staff of Abjuration (Major),"4,000 gp",1,Equipment.aspx?ID=351
+Staff of Conjuration (Major),"4,000 gp",1,Equipment.aspx?ID=352
+Staff of Divination (Major),"4,000 gp",1,Equipment.aspx?ID=353
+Staff of Enchantment (Major),"4,000 gp",1,Equipment.aspx?ID=354
+Staff of Evocation (Major),"4,000 gp",1,Equipment.aspx?ID=355
+Staff of Illusion (Major),"4,000 gp",1,Equipment.aspx?ID=359
+Staff of Necromancy (Major),"4,000 gp",1,Equipment.aspx?ID=360
+Staff of Transmutation (Major),"4,000 gp",1,Equipment.aspx?ID=363
+Staff of Healing (True),"9,200 gp",1,Equipment.aspx?ID=357
+Staff of Power,"10,000 gp",1,Equipment.aspx?ID=361
+Staff of the Magi,"90,000 gp",1,Equipment.aspx?ID=362
+`}],
+
   [ "armour", { displayName: "Armour", data: `
 name,value,bulk,url
 Explorer's Clothing,1 sp,L,Armor.aspx?ID=2
