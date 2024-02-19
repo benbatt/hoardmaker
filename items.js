@@ -718,7 +718,6 @@ Sai,6 sp,L,Weapons.aspx?ID=59
 Sap,1 sp,L,Weapons.aspx?ID=37
 Scimitar,1 gp,1,Weapons.aspx?ID=38
 Scythe,2 gp,2,Weapons.aspx?ID=39
-Shield Bash,,,Weapons.aspx?ID=40
 Shield Boss,5 sp,,Weapons.aspx?ID=41
 Shield Spikes,5 sp,,Weapons.aspx?ID=42
 Shortsword,9 sp,L,Weapons.aspx?ID=43
