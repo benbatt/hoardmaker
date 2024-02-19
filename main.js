@@ -77,8 +77,16 @@ function gpValueWithinLimit(value, valueLimit) {
   return 0 < value && value <= valueLimit;
 }
 
+function randomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function randomElement(array) {
+  return array[randomIndex(array)];
+}
+
 function takeRandomElement(array) {
-  var index = Math.floor(Math.random() * array.length);
+  var index = randomIndex(array);
   var element = array[index];
 
   array.splice(index, 1);
@@ -88,9 +96,8 @@ function takeRandomElement(array) {
 
 function selectSpell(predicate) {
   let candidates = getSpells().filter(predicate);
-  let index = Math.floor(Math.random() * candidates.length);
 
-  return candidates[index];
+  return randomElement(candidates);
 }
 
 function cloneItem(item) {
@@ -119,7 +126,7 @@ function createAnchor(contents, url) {
   return anchor;
 }
 
-function createSpellItemName(template, itemURL, spellName, spellURL) {
+function createCompoundItemName(template, itemURL, componentName, componentURL) {
   let itemLinkStart = template.indexOf("[") + 1;
   let itemLinkEnd = template.indexOf("]");
 
@@ -130,12 +137,29 @@ function createSpellItemName(template, itemURL, spellName, spellURL) {
   let suffix = template.substring(spellIndex + 1);
 
   let result = document.createElement("span");
-  result.append(itemLink, infix, createAnchor(spellName, spellURL), suffix);
+  result.append(itemLink, infix, createAnchor(componentName, componentURL), suffix);
 
   return result;
 }
 
+function selectAmmunition(filter) {
+  if (filter) {
+    filter = filter.split("|");
+    return randomElement(Ammunition.filter((a) => filter.includes(a.name)));
+  } else {
+    return randomElement(Ammunition);
+  }
+}
+
 const Transformations = new Map([
+  [ "ammunition", function(item, parameters) {
+    let result = cloneItem(item);
+
+    let ammunition = selectAmmunition(parameters.filter);
+    result.name = createCompoundItemName(parameters.name, item.url, ammunition.displayName, ammunition.url);
+
+    return result;
+  }],
   [ "continuation", function(item, parameters) {
     let level = +parameters.level;
 
@@ -162,7 +186,7 @@ const Transformations = new Map([
     });
 
     let result = cloneItem(item);
-    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+    result.name = createCompoundItemName(parameters.name, item.url, spell.name, spell.url);
 
     return result;
   }],
@@ -171,7 +195,7 @@ const Transformations = new Map([
     let spell = selectSpell((spell) => (+spell.level) == level);
 
     let result = cloneItem(item);
-    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+    result.name = createCompoundItemName(parameters.name, item.url, spell.name, spell.url);
 
     return result;
   }],
@@ -204,7 +228,7 @@ const Transformations = new Map([
     });
 
     let result = cloneItem(item);
-    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+    result.name = createCompoundItemName(parameters.name, item.url, spell.name, spell.url);
 
     return result;
   }],

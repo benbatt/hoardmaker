@@ -115,7 +115,7 @@ Holy Water,3 gp,L,Equipment.aspx?ID=245,
 Nectar of Purification,3 gp,L,Equipment.aspx?ID=174,
 Owlbear Claw,3 gp,,Equipment.aspx?ID=230,
 Runestone,3 gp,L,Equipment.aspx?ID=247,
-Shining Ammunition,3 gp,,Equipment.aspx?ID=165,
+Shining Ammunition,3 gp,,Equipment.aspx?ID=165,type=ammunition&name=[Shining] $
 Unholy Water,3 gp,L,Equipment.aspx?ID=248,
 1st-Level Scroll,4 gp,L,Equipment.aspx?ID=640,type=spell&level=1&name=[Scroll] of $ (1st level)
 Healing Potion (Minor),4 gp,L,Equipment.aspx?ID=186,
@@ -136,14 +136,14 @@ Savior Spike,7 gp,,Equipment.aspx?ID=232,
 Feather Step Stone,8 gp,,Equipment.aspx?ID=212,
 Feather Token (Bird),8 gp,,Equipment.aspx?ID=244,
 Oil of Mending,9 gp,L,Equipment.aspx?ID=178,
-Beacon Shot,10 gp,,Equipment.aspx?ID=159,
+Beacon Shot,10 gp,,Equipment.aspx?ID=159,type=ammunition&filter=arrow|bolt&name=[Beacon] $
 Feather Token (Chest),10 gp,,Equipment.aspx?ID=244,
 Vine Arrow,10 gp,,Equipment.aspx?ID=170,
 Potion of Water Breathing,11 gp,L,Equipment.aspx?ID=196,
 Sleep Arrow,11 gp,,Equipment.aspx?ID=166,
 2nd-Level Scroll,12 gp,L,Equipment.aspx?ID=640,type=spell&level=2&name=[Scroll] of $ (2nd level)
 Healing Potion (Lesser),12 gp,L,Equipment.aspx?ID=186,
-Spellstrike Ammunition (Type I),12 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type I),12 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type I)
 Dragon Turtle Scale,13 gp,,Equipment.aspx?ID=206,
 Barkskin Potion,15 gp,L,Equipment.aspx?ID=184,
 Climbing Bolt,15 gp,,Equipment.aspx?ID=160,
@@ -159,7 +159,7 @@ Shark Tooth Charm,23 gp,,Equipment.aspx?ID=233,
 Salve of Slipperiness,25 gp,L,Equipment.aspx?ID=183,
 3rd-Level Scroll,30 gp,L,Equipment.aspx?ID=640,type=spell&level=3&name=[Scroll] of $ (3rd level)
 Emerald Grasshopper,30 gp,,Equipment.aspx?ID=208,
-Spellstrike Ammunition (Type II),30 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type II),30 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type II)
 Tiger Menuki,30 gp,,Equipment.aspx?ID=236,
 Oil of Weightlessness (Greater),36 gp,L,Equipment.aspx?ID=181,
 Feather Token (Tree),38 gp,,Equipment.aspx?ID=244,
@@ -176,7 +176,7 @@ Serum of Sex Shift,60 gp,L,Equipment.aspx?ID=198,
 Murderer's Knot,66 gp,,Equipment.aspx?ID=228,
 4th-Level Scroll,70 gp,L,Equipment.aspx?ID=640,type=spell&level=4&name=[Scroll] of $ (4th level)
 Dragon's Breath Potion (Young),70 gp,L,Equipment.aspx?ID=185,
-Spellstrike Ammunition (Type III),70 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type III),70 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type III)
 Swift Block Cabochon,70 gp,,Equipment.aspx?ID=235,
 Candle of Truth,75 gp,,Equipment.aspx?ID=240,
 Feather Token (Swan Boat),76 gp,,Equipment.aspx?ID=244,
@@ -186,13 +186,13 @@ Gallows Tooth,100 gp,,Equipment.aspx?ID=214,
 Jade Bauble,100 gp,,Equipment.aspx?ID=222,
 Potion of Flying,100 gp,L,Equipment.aspx?ID=189,
 Javelin of Lightning,110 gp,L,Equipment.aspx?ID=246,
-Explosive Ammunition,130 gp,,Equipment.aspx?ID=162,
+Explosive Ammunition,130 gp,,Equipment.aspx?ID=162,type=ammunition&name=[Explosive] $
 Feather Token (Whip),130 gp,,Equipment.aspx?ID=244,
 Storm Arrow,130 gp,,Equipment.aspx?ID=169,
 Dust of Disappearance,135 gp,,Equipment.aspx?ID=242,
 Aligned Oil,140 gp,L,Equipment.aspx?ID=173,
 5th-Level Scroll,150 gp,L,Equipment.aspx?ID=640,type=spell&level=5&name=[Scroll] of $ (5th level)
-Spellstrike Ammunition (Type IV),150 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type IV),150 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type IV)
 Vanishing Coin,160 gp,,Equipment.aspx?ID=237,
 Iron Medallion,175 gp,,Equipment.aspx?ID=221,
 Mummified Bat,175 gp,,Equipment.aspx?ID=227,
@@ -202,7 +202,7 @@ Oil of Repulsion,175 gp,L,Equipment.aspx?ID=180,
 Oil of Keen Edges,250 gp,L,Equipment.aspx?ID=177,
 Potion of Swimming (Greater),250 gp,L,Equipment.aspx?ID=193,
 6th-Level Scroll,300 gp,L,Equipment.aspx?ID=640,type=spell&level=6&name=[Scroll] of $ (6th level)
-Spellstrike Ammunition (Type V),300 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type V),300 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type V)
 Fade Band,320 gp,,Equipment.aspx?ID=210,
 Potion of Tongues,320 gp,L,Equipment.aspx?ID=194,
 Salve of Antiparalysis (Greater),325 gp,L,Equipment.aspx?ID=182,
@@ -211,22 +211,22 @@ Dragon's Breath Potion (Adult),400 gp,L,Equipment.aspx?ID=185,
 Eye of Apprehension,400 gp,,Equipment.aspx?ID=209,
 Healing Potion (Greater),400 gp,L,Equipment.aspx?ID=186,
 Iron Equalizer,400 gp,,Equipment.aspx?ID=220,
-Penetrating Ammunition,400 gp,,Equipment.aspx?ID=164,
+Penetrating Ammunition,400 gp,,Equipment.aspx?ID=164,type=ammunition&filter=arrow|bolt&name=[Penetrating] $
 Panacea,450 gp,L,Equipment.aspx?ID=188,
-Explosive Ammunition (Greater),520 gp,,Equipment.aspx?ID=162,
+Explosive Ammunition (Greater),520 gp,,Equipment.aspx?ID=162,type=ammunition&name=[Greater Explosive] $
 Mending Lattice,525 gp,,Equipment.aspx?ID=224,
 7th-Level Scroll,600 gp,L,Equipment.aspx?ID=640,type=spell&level=7&name=[Scroll] of $ (7th level)
-Spellstrike Ammunition (Type VI),600 gp,,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type VI),600 gp,,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type VI)
 Potion of Resistance (Greater),850 gp,L,Equipment.aspx?ID=192,
 Viper's Fang,850 gp,,Equipment.aspx?ID=238,
 Dazing Coil,900 gp,,Equipment.aspx?ID=204,
-Ghost Ammunition,900 gp,,Equipment.aspx?ID=163,
+Ghost Ammunition,900 gp,,Equipment.aspx?ID=163,type=ammunition&name=[Ghost] $
 Iron Cudgel,900 gp,,Equipment.aspx?ID=219,
 Potion of Flying (Greater),"1,000 gp",L,Equipment.aspx?ID=189,
 Obfuscation Oil,"1,200 gp",L,Equipment.aspx?ID=175,
 8th-Level Scroll,"1,300 gp",L,Equipment.aspx?ID=640,type=spell&level=8&name=[Scroll] of $ (8th level)
 Disintegration Bolt,"1,300 gp",,Equipment.aspx?ID=161,
-Spellstrike Ammunition (Type VII),"1,300 gp",,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type VII),"1,300 gp",,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type VII)
 Stone Bullet,"1,300 gp",,Equipment.aspx?ID=168,
 Truesight Potion,"1,500 gp",L,Equipment.aspx?ID=199,
 Flame Navette,"1,800 gp",,Equipment.aspx?ID=213,
@@ -234,11 +234,11 @@ Ghost Dust,"1,800 gp",,Equipment.aspx?ID=215,
 Dispelling Sliver,"2,400 gp",,Equipment.aspx?ID=205,
 9th-Level Scroll,"3,000 gp",L,Equipment.aspx?ID=640,type=spell&level=9&name=[Scroll] of $ (9th level)
 Dragon's Breath Potion (Wyrm),"3,000 gp",L,Equipment.aspx?ID=185,
-Spellstrike Ammunition (Type VIII),"3,000 gp",,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type VIII),"3,000 gp",,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type VIII)
 Potion of Undetectability,"4,400 gp",L,Equipment.aspx?ID=195,
 Healing Potion (Major),"5,000 gp",L,Equipment.aspx?ID=186,
 10th-Level Scroll,"8,000 gp",L,Equipment.aspx?ID=640,type=spell&level=10&name=[Scroll] of $ (10th level)
-Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167,
+Spellstrike Ammunition (Type IX),"8,000 gp",,Equipment.aspx?ID=167,type=ammunition&name=[Spellstrike] $ (Type IX)
 Antimagic Oil,"13,000 gp",L,Equipment.aspx?ID=172,
 `}],
 
@@ -739,6 +739,13 @@ Dart,1 cp,L,Weapons.aspx?ID=68
 Hand Crossbow,3 gp,L,Weapons.aspx?ID=69
 `}],
 ]);
+
+const Ammunition = [
+  { name: "arrow", displayName: "Arrow", url: "Weapons.aspx?ID=83" },
+  { name: "bolt", displayName: "Bolt", url: "Weapons.aspx?ID=81" },
+  { name: "blowdart", displayName: "Blowgun Dart", url: "Weapons.aspx?ID=80" },
+  { name: "slingbullet", displayName: "Sling Bullet", url: "Weapons.aspx?ID=82" },
+];
 
 function getCollection(name) {
   let collection = Collections.get(name);
