@@ -738,6 +738,35 @@ Crossbow,3 gp,1,Weapons.aspx?ID=67
 Dart,1 cp,L,Weapons.aspx?ID=68
 Hand Crossbow,3 gp,L,Weapons.aspx?ID=69
 `}],
+
+  [ "magicweapons", { displayName: "Magic Weapons", data: `
+name,value,bulk,url,transform
+Magic Weapon (+1),35 gp,,Equipment.aspx?ID=380,type=weapon&name=[+1] $
+Magic Weapon (+1 Striking),100 gp,,Equipment.aspx?ID=380,type=weapon&name=[+1 striking] $
+Magic Weapon (+2 Striking),"1,000 gp",,Equipment.aspx?ID=380,type=weapon&name=[+2 striking] $
+Magic Weapon (+2 Greater Striking),"2,000 gp",,Equipment.aspx?ID=380,type=weapon&name=[+2 greater striking] $
+Magic Weapon (+3 Greater Striking),"10,000 gp",,Equipment.aspx?ID=380,type=weapon&name=[+3 greater striking] $
+Magic Weapon (+3 Major Striking),"40,000 gp",,Equipment.aspx?ID=380,type=weapon&name=[+3 major striking] $
+Fighter's Fork,50 gp,1,Equipment.aspx?ID=385
+Retribution Axe,60 gp,2,Equipment.aspx?ID=393
+Dagger of Venom,150 gp,L,Equipment.aspx?ID=383
+Caterwaul Sling,155 gp,L,Equipment.aspx?ID=382
+Bloodletting Kukri,240 gp,L,Equipment.aspx?ID=381
+Twining Staff,250 gp,,Equipment.aspx?ID=396
+Gloom Blade,700 gp,L,Equipment.aspx?ID=388
+Oathbow,"1,300 gp",2,Equipment.aspx?ID=392
+Dwarven Thrower,"2,750 gp",1,Equipment.aspx?ID=384
+Flame Tongue,"2,800 gp",1,Equipment.aspx?ID=386
+Storm Flash,"4,000 gp",1,Equipment.aspx?ID=395
+Holy Avenger,"4,500 gp",1,Equipment.aspx?ID=389
+Frost Brand,"10,000 gp",2,Equipment.aspx?ID=387
+Flame Tongue (Greater),"13,800 gp",1,Equipment.aspx?ID=386
+Luck Blade,"15,000 gp",L,Equipment.aspx?ID=390
+Storm Flash (Greater),"21,000 gp",1,Equipment.aspx?ID=395
+Luck Blade (Wishing),"30,000 gp",L,Equipment.aspx?ID=390
+Mattock of the Titans,"36,000 gp",16,Equipment.aspx?ID=391
+Sky Hammer,"70,000 gp",1,Equipment.aspx?ID=394
+`}],
 ]);
 
 const Ammunition = [

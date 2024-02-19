@@ -199,6 +199,16 @@ const Transformations = new Map([
 
     return result;
   }],
+  [ "weapon", function(item, parameters, options) {
+    let weapons = getCollection("weapons").items.filter((w) => bulkWithinLimit(w.bulk, options.bulkLimit));
+    let weapon = randomElement(weapons);
+
+    let result = cloneItem(item);
+    result.name = createCompoundItemName(parameters.name, item.url, weapon.name, weapon.url);
+    result.bulk = weapon.bulk;
+
+    return result;
+  }],
   [ "widening", function(item, parameters) {
     let level = +parameters.level;
     let spell = selectSpell((spell) => {
@@ -247,10 +257,10 @@ function parseParameters(parameters) {
   return result;
 }
 
-function applyTransformation(item) {
+function applyTransformation(item, options) {
   if (item.transform) {
     let parameters = parseParameters(item.transform)
-    return Transformations.get(parameters.type)(item, parameters);
+    return Transformations.get(parameters.type)(item, parameters, options);
   } else {
     return item;
   }
@@ -289,7 +299,7 @@ function selectItems(collections, options) {
     let item = takeRandomElement(candidates);
     let value = valueToGP(item.value);
 
-    result.push(applyTransformation(item));
+    result.push(applyTransformation(item, options));
     currentValue += value;
 
     if (options.itemLimit > 0 && result.length == options.itemLimit) {
