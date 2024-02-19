@@ -136,6 +136,36 @@ function createSpellItemName(template, itemURL, spellName, spellURL) {
 }
 
 const Transformations = new Map([
+  [ "continuation", function(item, parameters) {
+    let level = +parameters.level;
+
+    let spell = selectSpell((spell) => {
+      if (+spell.level != level) {
+        return false;
+      }
+
+      if (!spell.actions.match(/\[one-action|two-actions\]/)) {
+        return false;
+      }
+
+      let match = spell.duration.match(/^(\d+) (minute|hour)s?$/);
+
+      if (!match) {
+        return false;
+      }
+
+      if ((match[2] == "minute" && +match[1] < 10) || (match[2] == "hour" && +match[1] > 1)) {
+        return false;
+      }
+
+      return true;
+    });
+
+    let result = cloneItem(item);
+    result.name = createSpellItemName(parameters.name, item.url, spell.name, spell.url);
+
+    return result;
+  }],
   [ "spell", function(item, parameters) {
     let level = +parameters.level;
     let spell = selectSpell((spell) => (+spell.level) == level);
