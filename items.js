@@ -54,7 +54,6 @@ Religious Text,1 gp,L,Equipment.aspx?ID=42,type=deity&name=[Religious Text] of $
 Spellbook (Blank),1 gp,L,Equipment.aspx?ID=53,
 Tool (Long),1 gp,1,Equipment.aspx?ID=59,type=tool&filter=long
 Writing Set,1 gp,L,Equipment.aspx?ID=63,
-Adventurer's Pack,1.5 gp,1,Equipment.aspx?ID=1,
 Clothing (Fine),2 gp,L,Equipment.aspx?ID=15,
 Disguise Kit,2 gp,L,Equipment.aspx?ID=19,
 Lock (Simple),2 gp,,Equipment.aspx?ID=30,
