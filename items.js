@@ -50,7 +50,7 @@ Cookware,1 gp,2,Equipment.aspx?ID=17,
 Formula Book (Blank),1 gp,L,Equipment.aspx?ID=22,
 Lantern (Bull's-Eye),1 gp,1,Equipment.aspx?ID=29,
 Mirror,1 gp,,Equipment.aspx?ID=35,
-Religious Text,1 gp,L,Equipment.aspx?ID=42,
+Religious Text,1 gp,L,Equipment.aspx?ID=42,type=deity&name=[Religious Text] of $
 Spellbook (Blank),1 gp,L,Equipment.aspx?ID=53,
 Tool (Long),1 gp,1,Equipment.aspx?ID=59,type=tool&filter=long
 Writing Set,1 gp,L,Equipment.aspx?ID=63,
