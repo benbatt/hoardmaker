@@ -199,6 +199,14 @@ const Transformations = new Map([
 
     return result;
   }],
+  [ "tool", function(item, parameters, options) {
+    let tool = randomElement(Tools.filter((t) => t.type == parameters.filter));
+
+    let result = cloneItem(item);
+    result.name = tool.displayName;
+
+    return result;
+  }],
   [ "weapon", function(item, parameters, options) {
     let weapons = getCollection("weapons").items.filter((w) => bulkWithinLimit(w.bulk, options.bulkLimit));
     let weapon = randomElement(weapons);

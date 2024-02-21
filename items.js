@@ -2,110 +2,110 @@
 
 const Collections = new Map([
   [ "gear", { displayName: "Gear", data: `
-name,value,bulk,url
-Candle,1 cp,,Equipment.aspx?ID=10
-Chalk x10,1 cp,,Equipment.aspx?ID=12
-Mug,1 cp,,Equipment.aspx?ID=36
-Oil,1 cp,,Equipment.aspx?ID=38
-Piton,1 cp,,Equipment.aspx?ID=39
-Sack,1 cp,L,Equipment.aspx?ID=45
-Ten-Foot Pole,1 cp,1,Equipment.aspx?ID=56
-Torch,1 cp,L,Equipment.aspx?ID=60
-Bedroll,2 cp,L,Equipment.aspx?ID=7
-Soap,2 cp,,Equipment.aspx?ID=52
-Ladder (10 ft.),3 cp,3,Equipment.aspx?ID=28
-Flint and Steel,5 cp,,Equipment.aspx?ID=21
-Waterskin,5 cp,L,Equipment.aspx?ID=62
-Signal Whistle,8 cp,,Equipment.aspx?ID=50
-Backpack,1 sp,,Equipment.aspx?ID=4
-Basic Crafter's Book,1 sp,L,Equipment.aspx?ID=6
-Clothing (Explorer's),1 sp,L,Equipment.aspx?ID=15
-Clothing (Ordinary),1 sp,,Equipment.aspx?ID=15
-Disguise Kit (Replacement Cosmetics),1 sp,L,Equipment.aspx?ID=19
-Grappling Hook,1 sp,L,Equipment.aspx?ID=23
-Hammer,1 sp,L,Equipment.aspx?ID=24
-Religious Symbol (Wooden),1 sp,L,Equipment.aspx?ID=41
-Writing Set (Extra Ink and Paper),1 sp,L,Equipment.aspx?ID=63
-Lock (Poor),2 sp,,Equipment.aspx?ID=30
-Merchant's Scale,2 sp,L,Equipment.aspx?ID=34
-Saddlebags,2 sp,L,Equipment.aspx?ID=46
-Caltrops,3 sp,L,Equipment.aspx?ID=9
-Manacles (Poor),3 sp,,Equipment.aspx?ID=32
-Thieves' Tools (Replacement Picks),3 sp,L,Equipment.aspx?ID=58
-Clothing (Winter),4 sp,L,Equipment.aspx?ID=15
-Rations 1 week,4 sp,L,Equipment.aspx?ID=40
-Tool (Short),4 sp,L,Equipment.aspx?ID=59
-Climbing Kit,5 sp,1,Equipment.aspx?ID=14
-Crowbar,5 sp,L,Equipment.aspx?ID=18
-Disguise Kit (Elite Cosmetics),5 sp,L,Equipment.aspx?ID=19
-Material Component Pouch,5 sp,L,Equipment.aspx?ID=33
-Rope 50 ft.,5 sp,L,Equipment.aspx?ID=44
-Chest,6 sp,2,Equipment.aspx?ID=13
-Lantern (Hooded),7 sp,L,Equipment.aspx?ID=29
-Fishing Tackle,8 sp,1,Equipment.aspx?ID=20
-Musical Instrument (Handheld),8 sp,1,Equipment.aspx?ID=37
-Tent (Pup),8 sp,L,Equipment.aspx?ID=57
-Compass,1 gp,,Equipment.aspx?ID=16
-Cookware,1 gp,2,Equipment.aspx?ID=17
-Formula Book (Blank),1 gp,L,Equipment.aspx?ID=22
-Lantern (Bull's-Eye),1 gp,1,Equipment.aspx?ID=29
-Mirror,1 gp,,Equipment.aspx?ID=35
-Religious Text,1 gp,L,Equipment.aspx?ID=42
-Spellbook (Blank),1 gp,L,Equipment.aspx?ID=53
-Tool (Long),1 gp,1,Equipment.aspx?ID=59
-Writing Set,1 gp,L,Equipment.aspx?ID=63
-Adventurer's Pack,1.5 gp,1,Equipment.aspx?ID=1
-Clothing (Fine),2 gp,L,Equipment.aspx?ID=15
-Disguise Kit,2 gp,L,Equipment.aspx?ID=19
-Lock (Simple),2 gp,,Equipment.aspx?ID=30
-Musical Instrument (Heavy),2 gp,16,Equipment.aspx?ID=37
-Religious Symbol (Silver),2 gp,L,Equipment.aspx?ID=41
-Repair Kit,2 gp,1,Equipment.aspx?ID=43
-Alchemist's Tools,3 gp,1,Equipment.aspx?ID=2
-Hourglass,3 gp,L,Equipment.aspx?ID=27
-Manacles (Simple),3 gp,,Equipment.aspx?ID=32
-Thieves' Tools,3 gp,L,Equipment.aspx?ID=58
-Thieves' Tools (Infiltrator Picks),3 gp,L,Equipment.aspx?ID=58
-Artisan's Tools,4 gp,2,Equipment.aspx?ID=3
-Chain 10 ft.,4 gp,1,Equipment.aspx?ID=11
-Tack,4 gp,1,Equipment.aspx?ID=55
-Alchemist's Lab,5 gp,6,Equipment.aspx?ID=543
-Healer's Tools,5 gp,1,Equipment.aspx?ID=25
-Snare Kit,5 gp,2,Equipment.aspx?ID=51
-Tent (Four-Person),5 gp,1,Equipment.aspx?ID=57
-Scholarly Journal,6 gp,L,Equipment.aspx?ID=64
-Barding (Light; Small or Medium),10 gp,2,Equipment.aspx?ID=1552
-Survey Map,10 gp,L,Equipment.aspx?ID=65
-Lock (Average),15 gp,,Equipment.aspx?ID=30
-Barding (Light; Large),20 gp,4,Equipment.aspx?ID=1552
-Compass (Lensatic),20 gp,,Equipment.aspx?ID=16
-Crowbar (Levered),20 gp,L,Equipment.aspx?ID=18
-Fishing Tackle (Professional),20 gp,1,Equipment.aspx?ID=20
-Manacles (Average),20 gp,,Equipment.aspx?ID=32
-Spyglass,20 gp,L,Equipment.aspx?ID=54
-Barding (Heavy; Small or Medium),25 gp,4,Equipment.aspx?ID=1552
-Repair Kit (Superb),25 gp,1,Equipment.aspx?ID=43
-Scholarly Journal (Compendium),30 gp,L,Equipment.aspx?ID=64
-Climbing Kit (Extreme),40 gp,1,Equipment.aspx?ID=14
-Disguise Kit (Elite),40 gp,L,Equipment.aspx?ID=19
-Magnifying Glass,40 gp,,Equipment.aspx?ID=31
-Tent (Pavilion),40 gp,12,Equipment.aspx?ID=57
-Artisan's Tools (Sterling),50 gp,2,Equipment.aspx?ID=3
-Barding (Heavy; Large),50 gp,8,Equipment.aspx?ID=1552
-Healer's Tools (Expanded),50 gp,1,Equipment.aspx?ID=25
-Musical Instrument (Virtuoso Handheld),50 gp,1,Equipment.aspx?ID=37
-Survey Map (Atlas),50 gp,L,Equipment.aspx?ID=65
-Thieves' Tools (Infiltrator),50 gp,L,Equipment.aspx?ID=58
-Alchemist's Lab (Expanded),55 gp,6,Equipment.aspx?ID=543
-Clothing (High-Fashion Fine),55 gp,L,Equipment.aspx?ID=15
-Snare Kit (Specialist),55 gp,2,Equipment.aspx?ID=51
-Spyglass (Fine),80 gp,L,Equipment.aspx?ID=54
-Musical Instrument (Virtuoso Heavy),100 gp,16,Equipment.aspx?ID=37
-Lock (Good),200 gp,,Equipment.aspx?ID=30
-Manacles (Good),250 gp,,Equipment.aspx?ID=32
-Lock (Superior),"4,500 gp",,Equipment.aspx?ID=30
-Manacles (Superior),"5,000 gp",,Equipment.aspx?ID=32
-Holly and Mistletoe,,,Equipment.aspx?ID=26
+name,value,bulk,url,transform
+Candle,1 cp,,Equipment.aspx?ID=10,
+Chalk x10,1 cp,,Equipment.aspx?ID=12,
+Mug,1 cp,,Equipment.aspx?ID=36,
+Oil,1 cp,,Equipment.aspx?ID=38,
+Piton,1 cp,,Equipment.aspx?ID=39,
+Sack,1 cp,L,Equipment.aspx?ID=45,
+Ten-Foot Pole,1 cp,1,Equipment.aspx?ID=56,
+Torch,1 cp,L,Equipment.aspx?ID=60,
+Bedroll,2 cp,L,Equipment.aspx?ID=7,
+Soap,2 cp,,Equipment.aspx?ID=52,
+Ladder (10 ft.),3 cp,3,Equipment.aspx?ID=28,
+Flint and Steel,5 cp,,Equipment.aspx?ID=21,
+Waterskin,5 cp,L,Equipment.aspx?ID=62,
+Signal Whistle,8 cp,,Equipment.aspx?ID=50,
+Backpack,1 sp,,Equipment.aspx?ID=4,
+Basic Crafter's Book,1 sp,L,Equipment.aspx?ID=6,
+Clothing (Explorer's),1 sp,L,Equipment.aspx?ID=15,
+Clothing (Ordinary),1 sp,,Equipment.aspx?ID=15,
+Disguise Kit (Replacement Cosmetics),1 sp,L,Equipment.aspx?ID=19,
+Grappling Hook,1 sp,L,Equipment.aspx?ID=23,
+Hammer,1 sp,L,Equipment.aspx?ID=24,
+Religious Symbol (Wooden),1 sp,L,Equipment.aspx?ID=41,
+Writing Set (Extra Ink and Paper),1 sp,L,Equipment.aspx?ID=63,
+Lock (Poor),2 sp,,Equipment.aspx?ID=30,
+Merchant's Scale,2 sp,L,Equipment.aspx?ID=34,
+Saddlebags,2 sp,L,Equipment.aspx?ID=46,
+Caltrops,3 sp,L,Equipment.aspx?ID=9,
+Manacles (Poor),3 sp,,Equipment.aspx?ID=32,
+Thieves' Tools (Replacement Picks),3 sp,L,Equipment.aspx?ID=58,
+Clothing (Winter),4 sp,L,Equipment.aspx?ID=15,
+Rations 1 week,4 sp,L,Equipment.aspx?ID=40,
+Tool (Short),4 sp,L,Equipment.aspx?ID=59,type=tool&filter=short
+Climbing Kit,5 sp,1,Equipment.aspx?ID=14,
+Crowbar,5 sp,L,Equipment.aspx?ID=18,
+Disguise Kit (Elite Cosmetics),5 sp,L,Equipment.aspx?ID=19,
+Material Component Pouch,5 sp,L,Equipment.aspx?ID=33,
+Rope 50 ft.,5 sp,L,Equipment.aspx?ID=44,
+Chest,6 sp,2,Equipment.aspx?ID=13,
+Lantern (Hooded),7 sp,L,Equipment.aspx?ID=29,
+Fishing Tackle,8 sp,1,Equipment.aspx?ID=20,
+Musical Instrument (Handheld),8 sp,1,Equipment.aspx?ID=37,
+Tent (Pup),8 sp,L,Equipment.aspx?ID=57,
+Compass,1 gp,,Equipment.aspx?ID=16,
+Cookware,1 gp,2,Equipment.aspx?ID=17,
+Formula Book (Blank),1 gp,L,Equipment.aspx?ID=22,
+Lantern (Bull's-Eye),1 gp,1,Equipment.aspx?ID=29,
+Mirror,1 gp,,Equipment.aspx?ID=35,
+Religious Text,1 gp,L,Equipment.aspx?ID=42,
+Spellbook (Blank),1 gp,L,Equipment.aspx?ID=53,
+Tool (Long),1 gp,1,Equipment.aspx?ID=59,type=tool&filter=long
+Writing Set,1 gp,L,Equipment.aspx?ID=63,
+Adventurer's Pack,1.5 gp,1,Equipment.aspx?ID=1,
+Clothing (Fine),2 gp,L,Equipment.aspx?ID=15,
+Disguise Kit,2 gp,L,Equipment.aspx?ID=19,
+Lock (Simple),2 gp,,Equipment.aspx?ID=30,
+Musical Instrument (Heavy),2 gp,16,Equipment.aspx?ID=37,
+Religious Symbol (Silver),2 gp,L,Equipment.aspx?ID=41,
+Repair Kit,2 gp,1,Equipment.aspx?ID=43,
+Alchemist's Tools,3 gp,1,Equipment.aspx?ID=2,
+Hourglass,3 gp,L,Equipment.aspx?ID=27,
+Manacles (Simple),3 gp,,Equipment.aspx?ID=32,
+Thieves' Tools,3 gp,L,Equipment.aspx?ID=58,
+Thieves' Tools (Infiltrator Picks),3 gp,L,Equipment.aspx?ID=58,
+Artisan's Tools,4 gp,2,Equipment.aspx?ID=3,
+Chain 10 ft.,4 gp,1,Equipment.aspx?ID=11,
+Tack,4 gp,1,Equipment.aspx?ID=55,
+Alchemist's Lab,5 gp,6,Equipment.aspx?ID=543,
+Healer's Tools,5 gp,1,Equipment.aspx?ID=25,
+Snare Kit,5 gp,2,Equipment.aspx?ID=51,
+Tent (Four-Person),5 gp,1,Equipment.aspx?ID=57,
+Scholarly Journal,6 gp,L,Equipment.aspx?ID=64,
+Barding (Light; Small or Medium),10 gp,2,Equipment.aspx?ID=1552,
+Survey Map,10 gp,L,Equipment.aspx?ID=65,
+Lock (Average),15 gp,,Equipment.aspx?ID=30,
+Barding (Light; Large),20 gp,4,Equipment.aspx?ID=1552,
+Compass (Lensatic),20 gp,,Equipment.aspx?ID=16,
+Crowbar (Levered),20 gp,L,Equipment.aspx?ID=18,
+Fishing Tackle (Professional),20 gp,1,Equipment.aspx?ID=20,
+Manacles (Average),20 gp,,Equipment.aspx?ID=32,
+Spyglass,20 gp,L,Equipment.aspx?ID=54,
+Barding (Heavy; Small or Medium),25 gp,4,Equipment.aspx?ID=1552,
+Repair Kit (Superb),25 gp,1,Equipment.aspx?ID=43,
+Scholarly Journal (Compendium),30 gp,L,Equipment.aspx?ID=64,
+Climbing Kit (Extreme),40 gp,1,Equipment.aspx?ID=14,
+Disguise Kit (Elite),40 gp,L,Equipment.aspx?ID=19,
+Magnifying Glass,40 gp,,Equipment.aspx?ID=31,
+Tent (Pavilion),40 gp,12,Equipment.aspx?ID=57,
+Artisan's Tools (Sterling),50 gp,2,Equipment.aspx?ID=3,
+Barding (Heavy; Large),50 gp,8,Equipment.aspx?ID=1552,
+Healer's Tools (Expanded),50 gp,1,Equipment.aspx?ID=25,
+Musical Instrument (Virtuoso Handheld),50 gp,1,Equipment.aspx?ID=37,
+Survey Map (Atlas),50 gp,L,Equipment.aspx?ID=65,
+Thieves' Tools (Infiltrator),50 gp,L,Equipment.aspx?ID=58,
+Alchemist's Lab (Expanded),55 gp,6,Equipment.aspx?ID=543,
+Clothing (High-Fashion Fine),55 gp,L,Equipment.aspx?ID=15,
+Snare Kit (Specialist),55 gp,2,Equipment.aspx?ID=51,
+Spyglass (Fine),80 gp,L,Equipment.aspx?ID=54,
+Musical Instrument (Virtuoso Heavy),100 gp,16,Equipment.aspx?ID=37,
+Lock (Good),200 gp,,Equipment.aspx?ID=30,
+Manacles (Good),250 gp,,Equipment.aspx?ID=32,
+Lock (Superior),"4,500 gp",,Equipment.aspx?ID=30,
+Manacles (Superior),"5,000 gp",,Equipment.aspx?ID=32,
+Holly and Mistletoe,,,Equipment.aspx?ID=26,
 `}],
 
   [ "consumables", { displayName: "Consumables", data: `
@@ -773,6 +773,24 @@ const Ammunition = [
   { name: "bolt", displayName: "Bolt", url: "Weapons.aspx?ID=81" },
   { name: "blowdart", displayName: "Blowgun Dart", url: "Weapons.aspx?ID=80" },
   { name: "slingbullet", displayName: "Sling Bullet", url: "Weapons.aspx?ID=82" },
+];
+
+const Tools = [
+  { type: "short", displayName: "Hand Adze" },
+  { type: "short", displayName: "Awl" },
+  { type: "short", displayName: "Chisel" },
+  { type: "short", displayName: "Hand Drill" },
+  { type: "short", displayName: "Ice Hook" },
+  { type: "short", displayName: "Spanner" },
+  { type: "short", displayName: "Tongs" },
+  { type: "short", displayName: "Trowel" },
+  { type: "long", displayName: "Axe" },
+  { type: "long", displayName: "Hoe" },
+  { type: "long", displayName: "Foot Adze" },
+  { type: "long", displayName: "Rake" },
+  { type: "long", displayName: "Saw" },
+  { type: "long", displayName: "Shovel" },
+  { type: "long", displayName: "Sledgehammer" },
 ];
 
 function getCollection(name) {
