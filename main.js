@@ -137,7 +137,15 @@ function createCompoundItemName(template, itemURL, componentName, componentURL) 
   let suffix = template.substring(spellIndex + 1);
 
   let result = document.createElement("span");
-  result.append(itemLink, infix, createAnchor(componentName, componentURL), suffix);
+  result.append(itemLink, infix);
+
+  if (componentURL) {
+    result.append(createAnchor(componentName, componentURL));
+  } else {
+    result.append(componentName);
+  }
+
+  result.append(suffix);
 
   return result;
 }
@@ -187,6 +195,14 @@ const Transformations = new Map([
 
     let result = cloneItem(item);
     result.name = createCompoundItemName(parameters.name, item.url, spell.name, spell.url);
+
+    return result;
+  }],
+  [ "deity", function(item, parameters) {
+    let deity = randomElement(Deities);
+
+    let result = cloneItem(item);
+    result.name = createCompoundItemName(parameters.name, item.url, deity.name);
 
     return result;
   }],

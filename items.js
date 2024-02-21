@@ -24,7 +24,7 @@ Clothing (Ordinary),1 sp,,Equipment.aspx?ID=15,
 Disguise Kit (Replacement Cosmetics),1 sp,L,Equipment.aspx?ID=19,
 Grappling Hook,1 sp,L,Equipment.aspx?ID=23,
 Hammer,1 sp,L,Equipment.aspx?ID=24,
-Religious Symbol (Wooden),1 sp,L,Equipment.aspx?ID=41,
+Religious Symbol (Wooden),1 sp,L,Equipment.aspx?ID=41,type=deity&name=[Wooden Symbol] of $
 Writing Set (Extra Ink and Paper),1 sp,L,Equipment.aspx?ID=63,
 Lock (Poor),2 sp,,Equipment.aspx?ID=30,
 Merchant's Scale,2 sp,L,Equipment.aspx?ID=34,
@@ -59,7 +59,7 @@ Clothing (Fine),2 gp,L,Equipment.aspx?ID=15,
 Disguise Kit,2 gp,L,Equipment.aspx?ID=19,
 Lock (Simple),2 gp,,Equipment.aspx?ID=30,
 Musical Instrument (Heavy),2 gp,16,Equipment.aspx?ID=37,
-Religious Symbol (Silver),2 gp,L,Equipment.aspx?ID=41,
+Religious Symbol (Silver),2 gp,L,Equipment.aspx?ID=41,type=deity&name=[Silver Symbol] of $
 Repair Kit,2 gp,1,Equipment.aspx?ID=43,
 Alchemist's Tools,3 gp,1,Equipment.aspx?ID=2,
 Hourglass,3 gp,L,Equipment.aspx?ID=27,
@@ -773,6 +773,17 @@ const Ammunition = [
   { name: "bolt", displayName: "Bolt", url: "Weapons.aspx?ID=81" },
   { name: "blowdart", displayName: "Blowgun Dart", url: "Weapons.aspx?ID=80" },
   { name: "slingbullet", displayName: "Sling Bullet", url: "Weapons.aspx?ID=82" },
+];
+
+const Deities = [
+  { name: "Azar" },
+  { name: "Erastil" },
+  { name: "Gorum" },
+  { name: "Lielel" },
+  { name: "Mesha" },
+  { name: "Nemue" },
+  { name: "Thorondil" },
+  { name: "Torag" },
 ];
 
 const Tools = [
