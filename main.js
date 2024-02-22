@@ -20,6 +20,21 @@ function bulkWithinLimit(bulk, bulkLimit) {
   return false;
 }
 
+function levelWithinLimit(level, levelLimit) {
+  if (levelLimit == "-") {
+    return true;
+  } else {
+    levelLimit = Number.parseInt(levelLimit);
+    level = Number.parseInt(level);
+
+    if (Number.isInteger(levelLimit) && Number.isInteger(level) && level <= levelLimit) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function valueToGP(value) {
   let multiplier = 1;
 
@@ -106,6 +121,8 @@ function cloneItem(item) {
     name: item.name,
     value: item.value,
     bulk: item.bulk,
+    level: item.level,
+    rarity: item.rarity,
     url: item.url,
     transform: item.transform,
   };
@@ -298,7 +315,7 @@ function selectItems(collections, options) {
 
   for (let collection of collections) {
     for (let item of collection) {
-      if (bulkWithinLimit(item.bulk, options.bulkLimit)) {
+      if (bulkWithinLimit(item.bulk, options.bulkLimit) && levelWithinLimit(item.level, options.levelLimit)) {
         candidates.push({ item, value: valueToGP(item.value) });
       }
     }
@@ -321,7 +338,15 @@ function selectItems(collections, options) {
       }
     }
 
-    let { item, value } = takeRandomElement(candidates, c => c.value);
+    let { item, value } = takeRandomElement(candidates, function(c) {
+      if (c.item.rarity == "Uncommon") {
+        return c.value / 5;
+      } else if (c.item.rarity == "Rare") {
+        return c.value / 25;
+      } else {
+        return c.value;
+      }
+    });
 
     result.push(applyTransformation(item, options));
     currentValue += value;
@@ -333,7 +358,14 @@ function selectItems(collections, options) {
 
   if (currentValue < options.valueLimit) {
     let coinsValue = options.valueLimit - currentValue;
-    result.push({ name: coinString(coinsValue), value: gpString(coinsValue), bulk: "", url: CoinsURL });
+    result.push({
+      name: coinString(coinsValue),
+      value: gpString(coinsValue),
+      bulk: "",
+      level: "",
+      rarity: "",
+      url: CoinsURL
+    });
   }
 
   return result.length > 0 ? result : null;
@@ -344,6 +376,7 @@ function generate() {
     itemLimit: Number.parseInt(document.getElementById("itemLimit").value),
     valueLimit: valueToGP(document.getElementById("valueLimit").value),
     bulkLimit: document.getElementById("bulkLimit").value,
+    levelLimit: document.getElementById("levelLimit").value,
     collections: [],
   };
 
@@ -363,7 +396,8 @@ function generate() {
     let table = document.createElement("table");
 
     let header = document.createElement("tr");
-    header.append(createElement("th", "Name"), createElement("th", "Value"), createElement("th", "Bulk"));
+    header.append(createElement("th", "Name"), createElement("th", "Value"), createElement("th", "Bulk"),
+      createElement("th", "Level"), createElement("th", "Rarity"));
 
     table.append(header);
 
@@ -381,7 +415,8 @@ function generate() {
       }
 
       let tr = document.createElement("tr");
-      tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk));
+      tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk),
+        createElement("td", item.level), createElement("td", item.rarity));
 
       table.append(tr);
     }
@@ -439,6 +474,10 @@ function processQueryString() {
 
   if (searchParams.has("bulkLimit")) {
     document.getElementById("bulkLimit").value = searchParams.get("bulkLimit");
+  }
+
+  if (searchParams.has("levelLimit")) {
+    document.getElementById("levelLimit").value = searchParams.get("levelLimit");
   }
 
   if (searchParams.has("collections")) {
