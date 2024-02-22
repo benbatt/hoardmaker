@@ -72,11 +72,6 @@ function coinString(value) {
   return coins.join(", ");
 }
 
-function gpValueWithinLimit(value, valueLimit) {
-  value = valueToGP(value);
-  return 0 < value && value <= valueLimit;
-}
-
 function randomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -85,8 +80,14 @@ function randomElement(array) {
   return array[randomIndex(array)];
 }
 
-function takeRandomElement(array) {
-  var index = randomIndex(array);
+function takeRandomElement(array, weightFunction) {
+  let totalWeight = array.reduce((weight, element) => weight + weightFunction(element), 0);
+
+  let t = Math.random() * totalWeight;
+
+  let currentWeight = 0;
+  let index = array.findIndex(element => { currentWeight += weightFunction(element); return t < currentWeight; });
+
   var element = array[index];
 
   array.splice(index, 1);
@@ -298,7 +299,7 @@ function selectItems(collections, options) {
   for (let collection of collections) {
     for (let item of collection) {
       if (bulkWithinLimit(item.bulk, options.bulkLimit)) {
-        candidates.push(item);
+        candidates.push({ item, value: valueToGP(item.value) });
       }
     }
   }
@@ -313,15 +314,14 @@ function selectItems(collections, options) {
   while (true) {
     if (options.valueLimit > 0) {
       let remainingValue = options.valueLimit - currentValue;
-      candidates = candidates.filter((item) => gpValueWithinLimit(item.value, remainingValue));
+      candidates = candidates.filter(c => (0 < c.value && c.value <= remainingValue));
 
       if (candidates.length == 0) {
         break;
       }
     }
 
-    let item = takeRandomElement(candidates);
-    let value = valueToGP(item.value);
+    let { item, value } = takeRandomElement(candidates, c => c.value);
 
     result.push(applyTransformation(item, options));
     currentValue += value;
@@ -330,8 +330,6 @@ function selectItems(collections, options) {
       break;
     }
   }
-
-  result.sort((a, b) => valueToGP(b.value) - valueToGP(a.value));
 
   if (currentValue < options.valueLimit) {
     let coinsValue = options.valueLimit - currentValue;
