@@ -808,6 +808,11 @@ function getCollection(name) {
 
   if (collection && !collection.items) {
     let parseResult = Papa.parse(collection.data.trim(), { header: true });
+
+    for (let error of parseResult.errors) {
+      console.log(`In ${name}, row ${error.row}: ${error.message}`);
+    }
+
     collection.items = parseResult.data;
   }
 
