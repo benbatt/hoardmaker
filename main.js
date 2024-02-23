@@ -95,7 +95,7 @@ function randomElement(array) {
   return array[randomIndex(array)];
 }
 
-function takeRandomElement(array, weightFunction) {
+function randomWeightedElement(array, weightFunction) {
   let totalWeight = array.reduce((weight, element) => weight + weightFunction(element), 0);
 
   let t = Math.random() * totalWeight;
@@ -103,11 +103,7 @@ function takeRandomElement(array, weightFunction) {
   let currentWeight = 0;
   let index = array.findIndex(element => { currentWeight += weightFunction(element); return t < currentWeight; });
 
-  var element = array[index];
-
-  array.splice(index, 1);
-
-  return element;
+  return { element: array[index], index };
 }
 
 function selectSpell(predicate) {
@@ -221,6 +217,16 @@ const Transformations = new Map([
 
     let result = cloneItem(item);
     result.name = createCompoundItemName(parameters.name, item.url, deity.name);
+
+    return result;
+  }],
+  [ "gem", function(item, parameters, options) {
+    let result = cloneItem(item);
+    result.name = randomElement(Gems[parameters.group]);
+
+    let multiplier = Math.floor(Math.random() * 4 + 1);
+    result.value = coinString(valueToGP(parameters.baseValue) * multiplier);
+    result.allowRepeats = true;
 
     return result;
   }],
@@ -338,7 +344,7 @@ function selectItems(collections, options) {
       }
     }
 
-    let { item, value } = takeRandomElement(candidates, function(c) {
+    let { element, index } = randomWeightedElement(candidates, function(c) {
       if (c.item.rarity == "Uncommon") {
         return c.value / 5;
       } else if (c.item.rarity == "Rare") {
@@ -348,8 +354,14 @@ function selectItems(collections, options) {
       }
     });
 
-    result.push(applyTransformation(item, options));
-    currentValue += value;
+    let item = applyTransformation(element.item, options);
+
+    if (!item.allowRepeats) {
+      candidates.splice(index, 1);
+    }
+
+    result.push(item);
+    currentValue += valueToGP(item.value);
 
     if (options.itemLimit > 0 && result.length == options.itemLimit) {
       break;

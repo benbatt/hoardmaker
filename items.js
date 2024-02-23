@@ -795,6 +795,16 @@ Equipment.aspx?ID=390,Luck Blade (Wishing),"30,000 gp",L,19,Rare,
 Equipment.aspx?ID=391,Mattock of the Titans,"36,000 gp",16,19,Uncommon,
 Equipment.aspx?ID=394,Sky Hammer,"70,000 gp",1,20,Rare,
 `}],
+
+  [ "tradeGoods", { displayName: "Trade Goods", data: `
+url,name,value,bulk,level,rarity,transform
+Rules.aspx?ID=1110,Lesser Semiprecious Stone,20 sp,,0,Common,type=gem&group=lesserSemiprecious&baseValue=5 sp
+Rules.aspx?ID=1110,Moderate Semiprecious Stone,100 sp,,1,Common,type=gem&group=moderateSemiprecious&baseValue=25 sp
+Rules.aspx?ID=1110,Greater Semiprecious Stone,20 gp,,1,Common,type=gem&group=greaterSemiprecious&baseValue=5 gp
+Rules.aspx?ID=1110,Lesser Precious Stone,200 gp,,4,Common,type=gem&group=lesserPrecious&baseValue=50 gp
+Rules.aspx?ID=1110,Moderate Precious Stone,400 gp,,4,Common,type=gem&group=moderatePrecious&baseValue=100 gp
+Rules.aspx?ID=1110,Greater Precious Stone,2000 gp,,7,Common,type=gem&group=greaterPrecious&baseValue=500 gp
+`}],
 ]);
 
 const Ammunition = [
@@ -814,6 +824,74 @@ const Deities = [
   { name: "Thorondil" },
   { name: "Torag" },
 ];
+
+const Gems = {
+  lesserSemiprecious: [
+    "Agate",
+    "Alabaster",
+    "Azurite",
+    "Hematite",
+    "Lapis lazuli",
+    "Malachite",
+    "Obsidian",
+    "Irregular freshwater pearl",
+    "Pyrite",
+    "Rhodochrosite",
+    "Rock Crystal Quartz",
+    "Shell",
+    "Tiger’s-eye",
+    "Turquoise",
+  ],
+  moderateSemiprecious: [
+    "Bloodstone",
+    "Carnelian",
+    "Chrysoprase",
+    "Citrine",
+    "Ivory",
+    "Jasper",
+    "Moonstone",
+    "Onyx",
+    "Peridot",
+    "Milky Quartz",
+    "Rose Quartz",
+    "Smoky Quartz",
+    "Sard",
+    "Sardonyx",
+    "Red Spinel",
+    "Green Spinel",
+    "Zircon",
+  ],
+  greaterSemiprecious: [
+    "Amber",
+    "Amethyst",
+    "Chrysoberyl",
+    "Coral",
+    "Garnet",
+    "Jade",
+    "Jet",
+    "Saltwater Pearl",
+    "Deep Blue Spinel",
+    "Tourmaline",
+  ],
+  lesserPrecious: [
+    "Aquamarine",
+    "Opal",
+    "Black Pearl",
+    "Topaz",
+  ],
+  moderatePrecious: [
+    "Small Diamond",
+    "Emerald",
+    "Small Ruby",
+    "Sapphire",
+  ],
+  greaterPrecious: [
+    "Large Diamond",
+    "Brilliant Green Emerald",
+    "Large Ruby",
+    "Star Sapphire",
+  ],
+};
 
 const Tools = [
   { type: "short", displayName: "Hand Adze" },
