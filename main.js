@@ -87,8 +87,17 @@ function coinString(value) {
   return coins.join(", ");
 }
 
+function randomInteger(minimum, maximum) {
+  minimum = Math.floor(minimum);
+  maximum = Math.floor(maximum);
+
+  let range = maximum - minimum + 1;
+
+  return minimum + Math.floor(Math.random() * range);
+}
+
 function randomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return randomInteger(0, array.length - 1);
 }
 
 function randomElement(array) {
@@ -182,6 +191,20 @@ const Transformations = new Map([
 
     return result;
   }],
+  [ "art", function(item, parameters, options) {
+    let artObjects = getArtObjects(parameters.group).items.filter((o) => bulkWithinLimit(o.bulk, options.bulkLimit));
+    let artObject = randomElement(artObjects);
+
+    let result = cloneItem(item);
+    result.name = artObject.name;
+    result.bulk = artObject.bulk;
+
+    let multiplier = randomInteger(1, 4);
+    result.value = coinString(valueToGP(parameters.baseValue) * multiplier);
+    result.allowRepeats = true;
+
+    return result;
+  }],
   [ "continuation", function(item, parameters) {
     let level = +parameters.level;
 
@@ -224,7 +247,7 @@ const Transformations = new Map([
     let result = cloneItem(item);
     result.name = randomElement(Gems[parameters.group]);
 
-    let multiplier = Math.floor(Math.random() * 4 + 1);
+    let multiplier = randomInteger(1, 4);
     result.value = coinString(valueToGP(parameters.baseValue) * multiplier);
     result.allowRepeats = true;
 

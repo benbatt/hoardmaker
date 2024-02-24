@@ -804,6 +804,20 @@ Rules.aspx?ID=1110,Greater Semiprecious Stone,20 gp,,1,Common,type=gem&group=gre
 Rules.aspx?ID=1110,Lesser Precious Stone,200 gp,,4,Common,type=gem&group=lesserPrecious&baseValue=50 gp
 Rules.aspx?ID=1110,Moderate Precious Stone,400 gp,,4,Common,type=gem&group=moderatePrecious&baseValue=100 gp
 Rules.aspx?ID=1110,Greater Precious Stone,2000 gp,,7,Common,type=gem&group=greaterPrecious&baseValue=500 gp
+Rules.aspx?ID=1110,Minor Art Object,4 gp,,0,Common,type=art&group=minor&baseValue=1 gp
+Rules.aspx?ID=1110,Lesser Art Object,40 gp,,0,Common,type=art&group=lesser&baseValue=10 gp
+Rules.aspx?ID=1110,Moderate Art Object,100 gp,,0,Common,type=art&group=moderate&baseValue=25 gp
+Rules.aspx?ID=1110,Greater Art Object,1000 gp,,0,Common,type=art&group=greater&baseValue=250 gp
+Rules.aspx?ID=1110,Major Art Object,4000 gp,,0,Common,type=art&group=major&baseValue=1000 gp
+`}],
+
+  [ "test", { displayName: "Test", data: `
+url,name,value,bulk,level,rarity,transform
+Rules.aspx?ID=1110,Minor Art Object,4 gp,,0,Common,type=art&group=minor&baseValue=1 gp
+Rules.aspx?ID=1110,Lesser Art Object,40 gp,,0,Common,type=art&group=lesser&baseValue=10 gp
+Rules.aspx?ID=1110,Moderate Art Object,100 gp,,0,Common,type=art&group=moderate&baseValue=25 gp
+Rules.aspx?ID=1110,Greater Art Object,1000 gp,,0,Common,type=art&group=greater&baseValue=250 gp
+Rules.aspx?ID=1110,Major Art Object,4000 gp,,0,Common,type=art&group=major&baseValue=1000 gp
 `}],
 ]);
 
@@ -893,6 +907,128 @@ const Gems = {
   ],
 };
 
+const ArtObjects = new Map([
+  [ "minor", { data: `
+name,bulk
+Elegant cloth doll,
+Scrimshaw whale bone,
+Illustrated book,L
+Brass statuette of a bull,L
+Carved wooden game set,L
+Set of six ivory dice,
+Engraved copper ring,
+Lapis lazuli pendant,
+Hand mirror with decorated frame,L
+Colorful velvet half mask,
+Set of decorated ceramic plates,1
+Leather flagon with religious symbol,L
+Bronze bowl with wave imagery,L
+Brass anklet,
+Iron cauldron with gargoyle faces,1
+Silver religious symbol,
+Bronze brazier with demonic artwork,1
+Plain brass censer,
+Simple sculpture,L
+Simple painting,1
+`}],
+
+  [ "lesser", { data: `
+name,bulk
+Silk ceremonial armor,L
+Inscribed crocodile skull,L
+Illuminated manuscript,L
+Simple silver circlet,
+Copper statuette of a salamander,L
+Alabaster and obsidian game set,L
+Silk fan decorated with turquoise,
+Ceremonial dagger with onyx hilt,L
+Amphora with lavish scenes,1
+Colorful pastoral tapestry,1
+Chrysoberyl symbol of an evil eye,
+Alabaster idol,L
+Silk mask decorated with citrines,
+Set of decorated porcelain plates,1
+Etched copper ewer,1
+Brass scepter with amethyst head,L
+Bronze chalice with bloodstones,L
+Iron and rock crystal brazier,1
+Quality sculpture by an unknown,L
+Quality painting by an unknown,1
+`}],
+
+  [ "moderate", { data: `
+name,bulk
+Porcelain doll with amber eyes,L
+Marble altar,4
+Parade armor with flourishes,2
+Silver coronet with peridots,L
+Moonstone and onyx game set,L
+Gold and garnet ring,
+Ceremonial shortsword with spinels,L
+Silver statuette of a raven,L
+Porcelain vase inlaid with gold,L
+Enormous tapestry of a major battle,2
+Gold necklace with peridots,
+Virtuoso silver flute,L
+Coral idol of an elemental lord,L
+Silver mirror with gilded frame,L
+Silver flagon inscribed with fields,1
+Copper and spinel puzzle box,1
+Small cold iron cauldron with onyx,1
+Silver and jade censer,
+Life-size sculpture by an expert,3
+Wide landscape by an expert,1
+`}],
+
+ [ "greater", { data: `
+name,bulk
+Gilded ceremonial armor,2
+Ancient dragon skull etched with mystic sigils,2
+Original manuscript from a world-famous author,L
+Gold and aquamarine diadem,
+Gold dragon statuette,L
+Jet and white gold game set,L
+Gold rapier with amethysts,1
+Gold urn with scenes of judgment,1
+Splendid lyre of world-famous lyrist,1
+Platinum-framed monocle,
+Gold mask of a high priest,L
+Crystal dinner set with fine silverware,1
+Gold and opal bracelet,
+Intricate silver and gold music box,L
+Jeweled orrery of the planes,2
+Gilded scepter with sapphire,L
+Fine gold spyglass,L
+Gold chalice with black pearls,L
+Towering sculpture by a master,4
+Famous portrait by a master,1
+`}],
+
+  [ "major", { data: `
+name,bulk
+Jewel-encrusted gold altar,6
+Saint’s bone with lost scriptures,L
+Previously lost volume from a legendary author,L
+Jeweled mithral crown,L
+Platinum dragon statuette,L
+Diamond ring with platinum band,
+Star sapphire necklace,
+Darkwood violin by a legend,1
+Platinum image of a fey noble with a bit of orichalcum,L
+Jeweled gold puzzle box,L
+Crystallized dragon heart,1
+Living flame shaped into a phoenix,L
+Phasing ether silk tapestry,2
+Solidified moment of time,
+Tankard owned by a famous hero,L
+Thought lens of astral essence,L
+Divine art piece created by a god,1
+Chandelier crafted from dreams,2
+Enormous chryselephantine sculpture by a legend,8
+Major painting by a legend,2
+`}],
+])
+
 const Tools = [
   { type: "short", displayName: "Hand Adze" },
   { type: "short", displayName: "Awl" },
@@ -911,18 +1047,26 @@ const Tools = [
   { type: "long", displayName: "Sledgehammer" },
 ];
 
-function getCollection(name) {
-  let collection = Collections.get(name);
+function getTable(tables, name) {
+  let table = tables.get(name);
 
-  if (collection && !collection.items) {
-    let parseResult = Papa.parse(collection.data.trim(), { header: true });
+  if (table && !table.items) {
+    let parseResult = Papa.parse(table.data.trim(), { header: true });
 
     for (let error of parseResult.errors) {
       console.log(`In ${name}, row ${error.row}: ${error.message}`);
     }
 
-    collection.items = parseResult.data;
+    table.items = parseResult.data;
   }
 
-  return collection;
+  return table;
+}
+
+function getCollection(name) {
+  return getTable(Collections, name);
+}
+
+function getArtObjects(group) {
+  return getTable(ArtObjects, group);
 }
