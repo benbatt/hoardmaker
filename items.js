@@ -1,7 +1,7 @@
 "use strict";
 
 const Collections = new Map([
-  [ "gear", { displayName: "Gear", data: `
+  [ "gear", { displayName: "Gear", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity,transform
 Equipment.aspx?ID=10,Candle,1 cp,,0,Common,
 Equipment.aspx?ID=12,Chalk x10,1 cp,,0,Common,
@@ -107,7 +107,7 @@ Equipment.aspx?ID=32,Manacles (Superior),"5,000 gp",,17,Common,
 Equipment.aspx?ID=26,Holly and Mistletoe,,,0,Common,
 `}],
 
-  [ "consumables", { displayName: "Consumables", data: `
+  [ "consumables", { displayName: "Consumables", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity,transform
 Equipment.aspx?ID=244,Feather Token (Ladder),3 gp,,1,Common,
 Equipment.aspx?ID=245,Holy Water,3 gp,L,1,Common,
@@ -241,7 +241,7 @@ Equipment.aspx?ID=167,Spellstrike Ammunition (Type IX),"8,000 gp",,19,Common,typ
 Equipment.aspx?ID=172,Antimagic Oil,"13,000 gp",L,20,Rare,
 `}],
 
-  [ "alchemicals", { displayName: "Alchemicals", data: `
+  [ "alchemicals", { displayName: "Alchemicals", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity
 Equipment.aspx?ID=622,Alcohol,1 cp (or more),L,0,Common
 Equipment.aspx?ID=623,Bloodeye Coffee,5 sp,L,0,Common
@@ -389,7 +389,7 @@ Equipment.aspx?ID=92,Elixir of Rejuvenation,,L,20,Uncommon
 Equipment.aspx?ID=133,Philosopher's Stone,,2,20,Uncommon
 `}],
 
-  [ "holdables", { displayName: "Holdables", data: `
+  [ "holdables", { displayName: "Holdables", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity
 Equipment.aspx?ID=255,Everburning Torch,15 gp,L,1,Common
 Equipment.aspx?ID=270,Wondrous Figurine (Onyx Dog),34 gp,L,2,Common
@@ -434,7 +434,7 @@ Equipment.aspx?ID=262,Possibility Tome,"22,000 gp",2,18,Common
 Equipment.aspx?ID=253,Crystal Ball (Obsidian),"32,000 gp",L,19,Uncommon
 `}],
 
-  [ "wearables", { displayName: "Wearables", data: `
+  [ "wearables", { displayName: "Wearables", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity
 Equipment.aspx?ID=407,Aeon Stone (Dull Gray),9 gp,,1,Uncommon
 Equipment.aspx?ID=470,Wayfinder,28 gp,,2,Uncommon
@@ -572,7 +572,7 @@ Equipment.aspx?ID=471,Whisper of the First Lie,"60,000 gp",,20,Rare
 Equipment.aspx?ID=458,Ring of Spell Turning,"67,000 gp",,20,Rare
 `}],
 
-  [ "staves", { displayName: "Staves", data: `
+  [ "staves", { displayName: "Staves", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity
 Equipment.aspx?ID=356,Staff of Fire,60 gp,1,3,Common
 Equipment.aspx?ID=349,Animal Staff,90 gp,1,4,Common
@@ -618,7 +618,7 @@ Equipment.aspx?ID=361,Staff of Power,"10,000 gp",1,16,Rare
 Equipment.aspx?ID=362,Staff of the Magi,"90,000 gp",1,20,Rare
 `}],
 
-  [ "wands", { displayName: "Wands", data: `
+  [ "wands", { displayName: "Wands", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity,transform
 Equipment.aspx?ID=368,Magic Wand (1st-Level Spell),60 gp,L,3,Common,type=spell&level=1&name=[Wand] of $ (1st level)
 Equipment.aspx?ID=373,Wand of Widening (1st-Level Spell),100 gp,L,4,Common,type=widening&level=1&name=[Wand of Widening]: $ (1st level)
@@ -659,7 +659,7 @@ Equipment.aspx?ID=372,Wand of Smoldering Fireballs (9th-Level Spell),"70,000 gp"
 Equipment.aspx?ID=373,Wand of Widening (9th-Level Spell),"70,000 gp",L,20,Common,type=widening&level=9&name=[Wand of Widening]: $ (9th level)
 `}],
 
-  [ "armour", { displayName: "Armour", data: `
+  [ "armour", { displayName: "Armour", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity
 Armor.aspx?ID=2,Explorer's Clothing,1 sp,L,0,Common
 Armor.aspx?ID=3,Padded Armor,2 sp,L,0,Common
@@ -675,7 +675,7 @@ Armor.aspx?ID=12,Half Plate,18 gp,3,1,Common
 Armor.aspx?ID=13,Full Plate,30 gp,4,2,Common
 `}],
 
-  [ "shields", { displayName: "Shields", data: `
+  [ "shields", { displayName: "Shields", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity
 Shields.aspx?ID=1,Buckler,1 gp,L,0,Common
 Shields.aspx?ID=2,Wooden Shield,1 gp,1,0,Common
@@ -683,7 +683,7 @@ Shields.aspx?ID=3,Steel Shield,2 gp,1,0,Common
 Shields.aspx?ID=4,Tower Shield,10 gp,4,0,Common
 `}],
 
-  [ "weapons", { displayName: "Weapons", data: `
+  [ "weapons", { displayName: "Weapons", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity
 Weapons.aspx?ID=13,Clan Dagger,2 gp,L,0,Uncommon
 Weapons.aspx?ID=2,Club,,1,0,Common
@@ -763,7 +763,7 @@ Weapons.aspx?ID=77,Shortbow,3 gp,1,0,Common
 Weapons.aspx?ID=79,Shuriken,1 cp,,0,Uncommon
 `}],
 
-  [ "ammunition", { displayName: "Ammunition", data: `
+  [ "ammunition", { displayName: "Ammunition", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity
 Weapons.aspx?ID=83,Arrows x10,1 sp,L,0,Common
 Weapons.aspx?ID=80,Blowgun Darts x10,5 cp,L,0,Common
@@ -771,7 +771,7 @@ Weapons.aspx?ID=81,Bolts x10,1 sp,L,0,Common
 Weapons.aspx?ID=82,Sling Bullets x10,1 cp,L,0,Common
 `}],
 
-  [ "magicweapons", { displayName: "Magic Weapons", data: `
+  [ "magicweapons", { displayName: "Magic Weapons", tags: ["Magical"], data: `
 url,name,value,bulk,level,rarity,transform
 Equipment.aspx?ID=380,Magic Weapon (+1),35 gp,,2,Common,type=weapon&name=[+1] $
 Equipment.aspx?ID=380,Magic Weapon (+1 Striking),100 gp,,4,Common,type=weapon&name=[+1 striking] $
@@ -800,7 +800,7 @@ Equipment.aspx?ID=391,Mattock of the Titans,"36,000 gp",16,19,Uncommon,
 Equipment.aspx?ID=394,Sky Hammer,"70,000 gp",1,20,Rare,
 `}],
 
-  [ "tradeGoods", { displayName: "Trade Goods", data: `
+  [ "tradeGoods", { displayName: "Trade Goods", tags: ["Mundane"], data: `
 url,name,value,bulk,level,rarity,transform
 Rules.aspx?ID=1110,Lesser Semiprecious Stone,20 sp,,0,Common,type=gem&group=lesserSemiprecious&baseValue=5 sp
 Rules.aspx?ID=1110,Moderate Semiprecious Stone,100 sp,,1,Common,type=gem&group=moderateSemiprecious&baseValue=25 sp

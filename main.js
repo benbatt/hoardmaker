@@ -482,10 +482,25 @@ function generate() {
   queryLink.href = `${document.location.pathname}?${searchParams}`;
 }
 
+function updateTaggedCollections(tag, enable) {
+  for (let entry of Collections.entries()) {
+    if (entry[1].tags.includes(tag)) {
+      let checkbox = document.getElementById(`${entry[0]}Enable`);
+      checkbox.checked = enable;
+    }
+  }
+}
+
 function createCollectionControls() {
   let itemTypes = document.getElementById("itemTypes");
 
+  let tags = new Set();
+
   for (let entry of Collections.entries()) {
+    for (let tag of entry[1].tags) {
+      tags.add(tag);
+    }
+
     let div = document.createElement("div");
 
     let id = `${entry[0]}Enable`;
@@ -503,6 +518,29 @@ function createCollectionControls() {
     div.append(label);
 
     itemTypes.append(div);
+  }
+
+  let itemTags = document.getElementById("itemTags");
+
+  for (let tag of tags.values()) {
+    let div = document.createElement("div");
+
+    let id = `tag${tag}`;
+
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("id", id);
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("checked", true);
+    checkbox.addEventListener("input", (event) => { updateTaggedCollections(tag, checkbox.checked); });
+
+    div.append(checkbox);
+
+    let label = createElement("label", tag);
+    label.setAttribute("for", id);
+
+    div.append(label);
+
+    itemTags.append(div);
   }
 }
 
