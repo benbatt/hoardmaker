@@ -761,6 +761,10 @@ Weapons.aspx?ID=78,Halfling Sling Staff,5 gp,1,0,Uncommon
 Weapons.aspx?ID=76,Longbow,6 gp,2,0,Common
 Weapons.aspx?ID=77,Shortbow,3 gp,1,0,Common
 Weapons.aspx?ID=79,Shuriken,1 cp,,0,Uncommon
+`}],
+
+  [ "ammunition", { displayName: "Ammunition", data: `
+url,name,value,bulk,level,rarity
 Weapons.aspx?ID=83,Arrows x10,1 sp,L,0,Common
 Weapons.aspx?ID=80,Blowgun Darts x10,5 cp,L,0,Common
 Weapons.aspx?ID=81,Bolts x10,1 sp,L,0,Common
