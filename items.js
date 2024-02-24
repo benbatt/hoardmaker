@@ -810,15 +810,6 @@ Rules.aspx?ID=1110,Moderate Art Object,100 gp,,0,Common,type=art&group=moderate&
 Rules.aspx?ID=1110,Greater Art Object,1000 gp,,0,Common,type=art&group=greater&baseValue=250 gp
 Rules.aspx?ID=1110,Major Art Object,4000 gp,,0,Common,type=art&group=major&baseValue=1000 gp
 `}],
-
-  [ "test", { displayName: "Test", data: `
-url,name,value,bulk,level,rarity,transform
-Rules.aspx?ID=1110,Minor Art Object,4 gp,,0,Common,type=art&group=minor&baseValue=1 gp
-Rules.aspx?ID=1110,Lesser Art Object,40 gp,,0,Common,type=art&group=lesser&baseValue=10 gp
-Rules.aspx?ID=1110,Moderate Art Object,100 gp,,0,Common,type=art&group=moderate&baseValue=25 gp
-Rules.aspx?ID=1110,Greater Art Object,1000 gp,,0,Common,type=art&group=greater&baseValue=250 gp
-Rules.aspx?ID=1110,Major Art Object,4000 gp,,0,Common,type=art&group=major&baseValue=1000 gp
-`}],
 ]);
 
 const Ammunition = [
