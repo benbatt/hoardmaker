@@ -70,8 +70,10 @@ function gpString(value) {
 
 const Denominations = ["gp", "sp", "cp"];
 
-function coinString(value) {
+function valueToCoins(value) {
   let coins = [];
+  let roundedValue = 0;
+
   let coinValue = 1;
 
   for (let denomination of Denominations) {
@@ -79,12 +81,17 @@ function coinString(value) {
       let count = Math.floor(value / coinValue);
       coins.push(`${count} ${denomination}`);
       value -= count * coinValue;
+      roundedValue += count * coinValue;
     }
 
     coinValue /= 10;
   }
 
-  return coins.join(", ");
+  return { name: coins.join(", "), value: roundedValue };
+}
+
+function coinString(value) {
+  return valueToCoins(value).name;
 }
 
 function randomInteger(minimum, maximum) {
@@ -392,15 +399,18 @@ function selectItems(collections, options) {
   }
 
   if (currentValue < options.valueLimit) {
-    let coinsValue = options.valueLimit - currentValue;
-    result.push({
-      name: coinString(coinsValue),
-      value: gpString(coinsValue),
-      bulk: "",
-      level: "",
-      rarity: "",
-      url: CoinsURL
-    });
+    let { name, value } = valueToCoins(Math.random() * (options.valueLimit - currentValue));
+
+    if (name.length > 0) {
+      result.push({
+        name,
+        value: gpString(value),
+        bulk: "",
+        level: "",
+        rarity: "",
+        url: CoinsURL
+      });
+    }
   }
 
   return result.length > 0 ? result : null;
