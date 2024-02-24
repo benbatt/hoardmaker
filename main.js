@@ -416,7 +416,7 @@ function selectItems(collections, options) {
   return result.length > 0 ? result : null;
 }
 
-function generate() {
+function getOptions() {
   let options = {
     itemLimit: Number.parseInt(document.getElementById("itemLimit").value),
     valueLimit: valueToGP(document.getElementById("valueLimit").value),
@@ -433,6 +433,11 @@ function generate() {
     }
   }
 
+  return options;
+}
+
+function generate() {
+  let options = getOptions();
   let collections = options.collections.map((name) => getCollection(name).items);
 
   let items = selectItems(collections, options);
@@ -474,6 +479,10 @@ function generate() {
     let output = document.getElementById("output");
     output.prepend(table);
   }
+}
+
+function updateQueryLink() {
+  let options = getOptions();
 
   let queryLink = document.getElementById("queryLink");
   queryLink.text = "Link to these settings";
@@ -489,6 +498,8 @@ function updateTaggedCollections(tag, enable) {
       checkbox.checked = enable;
     }
   }
+
+  updateQueryLink();
 }
 
 function createCollectionControls() {
@@ -544,23 +555,25 @@ function createCollectionControls() {
   }
 }
 
-function processQueryString() {
+const ControlIDs = [
+  "itemLimit",
+  "valueLimit",
+  "bulkLimit",
+  "levelLimit",
+]
+
+function initialiseControls() {
+  createCollectionControls();
+
   let searchParams = new URLSearchParams(document.location.search);
 
-  if (searchParams.has("itemLimit")) {
-    document.getElementById("itemLimit").value = searchParams.get("itemLimit");
-  }
+  for (let id of ControlIDs) {
+    let element = document.getElementById(id);
+    element.addEventListener("input", updateQueryLink);
 
-  if (searchParams.has("valueLimit")) {
-    document.getElementById("valueLimit").value = searchParams.get("valueLimit");
-  }
-
-  if (searchParams.has("bulkLimit")) {
-    document.getElementById("bulkLimit").value = searchParams.get("bulkLimit");
-  }
-
-  if (searchParams.has("levelLimit")) {
-    document.getElementById("levelLimit").value = searchParams.get("levelLimit");
+    if (searchParams.has(id)) {
+      element.value = searchParams.get(id);
+    }
   }
 
   if (searchParams.has("collections")) {
@@ -568,11 +581,14 @@ function processQueryString() {
 
     for (let name of Collections.keys()) {
       let element = document.getElementById(`${name}Enable`);
+      element.addEventListener("input", updateQueryLink);
       element.checked = collections.includes(name);
     }
   }
+
+  updateQueryLink();
+
+  document.getElementById("generate").addEventListener("click", generate);
 }
 
-createCollectionControls();
-processQueryString();
-document.getElementById("generate").addEventListener("click", generate);
+initialiseControls();
