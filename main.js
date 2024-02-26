@@ -344,14 +344,47 @@ function applyTransformation(item, options) {
   }
 }
 
+function itemMatchesOptions(item, options) {
+  if (options.bulkLimit && !bulkWithinLimit(item.bulk, options.bulkLimit)) {
+    return false;
+  }
+
+  if (options.levelLimit && !levelWithinLimit(item.level, options.levelLimit)) {
+    return false;
+  }
+
+  if (options.exactLevel && item.level != options.exactLevel) {
+    return false;
+  }
+
+  return true;
+}
+
 const CoinsURL = "Rules.aspx?ID=182";
+
+function createCurrencyItem(gpValue) {
+  let { name, value } = valueToCoins(gpValue);
+
+  if (name.length > 0) {
+    return {
+      name,
+      value: gpString(value),
+      bulk: "",
+      level: "",
+      rarity: "",
+      url: CoinsURL
+    };
+  } else {
+    return null;
+  }
+}
 
 function selectItems(collections, options) {
   let candidates = [];
 
   for (let collection of collections) {
     for (let item of collection) {
-      if (bulkWithinLimit(item.bulk, options.bulkLimit) && levelWithinLimit(item.level, options.levelLimit)) {
+      if (itemMatchesOptions(item, options)) {
         candidates.push({ item, value: valueToGP(item.value) });
       }
     }
@@ -398,21 +431,6 @@ function selectItems(collections, options) {
     }
   }
 
-  if (currentValue < options.valueLimit) {
-    let { name, value } = valueToCoins(Math.random() * (options.valueLimit - currentValue));
-
-    if (name.length > 0) {
-      result.push({
-        name,
-        value: gpString(value),
-        bulk: "",
-        level: "",
-        rarity: "",
-        url: CoinsURL
-      });
-    }
-  }
-
   return result.length > 0 ? result : null;
 }
 
@@ -437,48 +455,113 @@ function getOptions() {
 }
 
 function generate() {
+  if (document.getElementById("modeByLevel").checked) {
+    generateByLevel();
+  } else if (document.getElementById("modeCustom").checked) {
+    generateCustom();
+  }
+}
+
+function generateByLevel() {
+  let preset = getSelectedPreset();
+  let remainingValue = preset.totalValue - preset.currency;
+
+  let items = [];
+
+  let itemCount = preset.items.reduce((sum, itemPreset) => sum + itemPreset.count, 0);
+
+  for (let itemPreset of preset.items) {
+    let options = {
+      itemLimit: itemPreset.count,
+      valueLimit: remainingValue,
+      bulkLimit: "",
+      exactLevel: itemPreset.level,
+    };
+
+    let collections = [];
+
+    for (let entry of Collections) {
+      if (itemPreset.tags.every(tag => entry[1].tags.includes(tag))) {
+        collections.push(getCollection(entry[0]).items);
+      }
+    }
+
+    let result = selectItems(collections, options);
+
+    if (result) {
+      for (let j = 0; j < itemPreset.count && j < result.length; ++j) {
+        items.push(result[j]);
+        remainingValue -= valueToGP(result[j].value);
+      }
+    }
+  }
+
+  let currencyItem = createCurrencyItem(remainingValue + preset.currency);
+
+  if (currencyItem) {
+    items.push(currencyItem);
+  }
+
+  displayItems(items);
+}
+
+function generateCustom() {
   let options = getOptions();
   let collections = options.collections.map((name) => getCollection(name).items);
 
   let items = selectItems(collections, options);
 
   if (items) {
-    let table = document.createElement("table");
+    let currentValue = items.reduce((total, item) => total + valueToGP(item.value), 0);
 
-    let header = document.createElement("tr");
-    header.append(createElement("th", "Name"), createElement("th", "Value"), createElement("th", "Bulk"),
-      createElement("th", "Level"), createElement("th", "Rarity"));
+    if (currentValue < options.valueLimit) {
+      let item = createCurrencyItem(Math.random() * (options.valueLimit - currentValue));
 
-    table.append(header);
-
-    let totalValue = 0;
-
-    for (let item of items) {
-      totalValue += valueToGP(item.value);
-
-      let name;
-
-      if (typeof(item.name) == "string") {
-        name = createAnchor(item.name, item.url);
-      } else {
-        name = item.name;
+      if (item) {
+        items.push(item);
       }
-
-      let tr = document.createElement("tr");
-      tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk),
-        createElement("td", item.level), createElement("td", item.rarity));
-
-      table.append(tr);
     }
 
-    let totalsRow = document.createElement("tr");
-    totalsRow.append(createElement("td", "Total"), createElement("td", gpString(totalValue)), createElement("td", ""));
-
-    table.append(totalsRow);
-
-    let output = document.getElementById("output");
-    output.prepend(table);
+    displayItems(items);
   }
+}
+
+function displayItems(items) {
+  let table = document.createElement("table");
+
+  let header = document.createElement("tr");
+  header.append(createElement("th", "Name"), createElement("th", "Value"), createElement("th", "Bulk"),
+    createElement("th", "Level"), createElement("th", "Rarity"));
+
+  table.append(header);
+
+  let totalValue = 0;
+
+  for (let item of items) {
+    totalValue += valueToGP(item.value);
+
+    let name;
+
+    if (typeof(item.name) == "string") {
+      name = createAnchor(item.name, item.url);
+    } else {
+      name = item.name;
+    }
+
+    let tr = document.createElement("tr");
+    tr.append(createElement("td", name), createElement("td", item.value), createElement("td", item.bulk),
+      createElement("td", item.level), createElement("td", item.rarity));
+
+    table.append(tr);
+  }
+
+  let totalsRow = document.createElement("tr");
+  totalsRow.append(createElement("td", "Total"), createElement("td", gpString(totalValue)), createElement("td", ""));
+
+  table.append(totalsRow);
+
+  let output = document.getElementById("output");
+  output.prepend(table);
 }
 
 function updateQueryLink() {
@@ -555,12 +638,62 @@ function createCollectionControls() {
   }
 }
 
+function ordinal(number) {
+  let digits = Math.floor(number) % 100;
+
+  if (4 <= digits && digits <= 20) {
+    return number + "th";
+  }
+
+  let ones = digits % 10;
+
+  if (ones == 1) {
+    return number + "st";
+  } else if (ones == 2) {
+    return number + "nd";
+  } else if (ones == 3) {
+    return number + "rd";
+  } else {
+    return number + "th";
+  }
+}
+
+function getSelectedPreset() {
+  let level = document.getElementById("partyLevel").value;
+  return getPresetByLevel(+level);
+}
+
+function showLevelPreset() {
+  let preset = getSelectedPreset();
+
+  let text = `Total value ${preset.totalValue}; currency ${preset.currency}`;
+
+  for (let item of preset.items) {
+    text += `; ${ordinal(item.level)} level (${item.tags.join(', ')}) x${item.count}`;
+  }
+
+  document.getElementById("presetDisplay").innerText = text;
+}
+
 const ControlIDs = [
   "itemLimit",
   "valueLimit",
   "bulkLimit",
   "levelLimit",
 ]
+
+const Modes = [
+  "ByLevel",
+  "Custom",
+];
+
+function setControlMode(activeMode) {
+  document.getElementById(`mode${activeMode}`).checked = true;
+
+  for (let mode of Modes) {
+    document.getElementById(`controls${mode}`).style.display = (mode == activeMode) ? "" : "none";
+  }
+}
 
 function initialiseControls() {
   createCollectionControls();
@@ -576,6 +709,12 @@ function initialiseControls() {
     }
   }
 
+  for (let mode of Modes) {
+    document.getElementById(`mode${mode}`).addEventListener("click", (event) => { setControlMode(mode); });
+  }
+
+  document.getElementById("partyLevel").addEventListener("input", (event) => { showLevelPreset(); });
+
   if (searchParams.has("collections")) {
     let collections = searchParams.get("collections").split(",");
 
@@ -587,6 +726,8 @@ function initialiseControls() {
   }
 
   updateQueryLink();
+  setControlMode("Custom");
+  showLevelPreset();
 
   document.getElementById("generate").addEventListener("click", generate);
 }
